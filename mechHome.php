@@ -205,7 +205,7 @@ session_start();
             <ul>
             <ul>
             <li>
-                    <a href="home.php" class="active">HOME</a>
+                    <a href="mechHome.php" class="active">HOME</a>
                 </li>
                 <li>
                     <a href="mech.php">MECHANIC</a>
@@ -214,7 +214,7 @@ session_start();
                     <a href="forum.php">ON ROAD HELP</a>
                 </li>
                 <li>
-                    <a href="userprofile.php">PROFILE</a>
+                    <a href="mechprofile.php">PROFILE</a>
                 </li>
                 </li>
                 <li>
