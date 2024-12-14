@@ -1,4 +1,9 @@
 <?php
+if (isset($_GET['logout'])) {
+
+    session_unset();
+    session_destroy();
+}
     session_start();
     ?>
 <!DOCTYPE html>
@@ -217,6 +222,7 @@
                 $_SESSION['mechname']=$mname;
                 $_SESSION['mechemail']=$memail;
                 $_SESSION['mechaddr']=$maddr;
+                $_SESSION['user_type'] = 'mechanic';
                 $_SESSION['mechnum']=$mechno1;
                 $_SESSION['mechpfp']=$mechpfp;
                 $_SESSION['mech_services']=$mechserv;
