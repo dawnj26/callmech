@@ -196,7 +196,7 @@ session_start();
         <div class="logo">
         <?php
                 require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='Current'";
+                $sql = "SELECT * FROM `components_images` WHERE status = 'Current'";
                 $dataset = $connect->query($sql);
                 if ($dataset) {
                     if ($dataset->num_rows > 0) {
@@ -208,6 +208,7 @@ session_start();
                         }
                     }
                 }
+                
                 ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
@@ -217,10 +218,10 @@ session_start();
             </div>
             <ul>
                 <li>
-                    <a href="home.php">HOME</a>
+                    <a href="mechHome.php">HOME</a>
                 </li>
                 <li>
-                    <a href="mech.php" class="active">MECHANIC</a>
+                    <a href="mech.php" >MECHANIC</a>
                 </li>
                 <li>
                     <a href="forum.php">ON ROAD HELP</a>
@@ -229,29 +230,37 @@ session_start();
                     <a href="aboutus.php">ABOUT US</a>
                 </li>
                 <li>
-                    <a href="userprofile.php">PROFILE</a>
+                    <a href="mechprofile.php" class="active">PROFILE</a>
                 </li>
             </ul>
         </nav>
     </header>
     <div class="orange"></div>
     <?php
-    require 'config.php';
-    $mechanicID = $_GET['mechID'];
+    
+
+    $mechanicID =  $_SESSION['mechanicid'];
+    if (!$mechanicID) {
+        $mechanicID = $_GET['mechID'];
+    }
+
     $_SESSION['mechID'] = $mechanicID;
+
     $sql = "SELECT * FROM `mechanics` WHERE mechid=$mechanicID";
+
     $dataset = $connect->query($sql) or die("Error query");
+
     if ($dataset->num_rows > 0) {
-        while ($row = $dataset->fetch_array()) {
-            $name = $row['1'];
-            $email = $row['2'];
-            $no = $row['4'];
-            $addr = $row['3'];
-            $id = $row['0'];
-            $pic = $row['7'];
+        while ($row = $dataset->fetch_assoc()) {
+            $name = $row['mechName'];
+            $email = $row['mechEmail'];
+            $no = $row['mechno'];
+            $addr = $row['mechaddr'];
+            $id = $row['mechid'];
+            $pic = $row['mech_pfp'];
             $_SESSION['mechname'] = $name;
-            $service = $row['6'];
-            $mechcover = $row['8'];
+            $service = $row['mech_services'];
+            $mechcover = $row['mech_cover'];
     ?>
             <div class="coverphoto" style="width: 90%;height: 200px; margin:auto; margin-top:2%;margin-bottom:1%;">
                 <img src="image/<?php echo $mechcover; ?>" alt="" srcset="" style="width:100%;height:200px;">
@@ -289,8 +298,7 @@ session_start();
                                 <p>contact us: <span style="color:#F86D1A;"><?php echo $no; ?></span> <br>
                                     <span style="color:#F86D1A;"><?php echo $addr; ?></span><br>
                                     Average Rating: <span style="color:#F86D1A;"> <?php
-                                                                                    require 'config.php';
-                                                                                    $mechanicID = $_GET['mechID'];
+                                                                 
                                                                                     $query = "SELECT AVG(ratings) as avg_rating FROM ratings WHERE mechanic_id = $mechanicID";
                                                                                     $result = $connect->query($query) or die("Error query");
                                                                                     if ($result) {
@@ -354,6 +362,8 @@ session_start();
         <?php
         }
     }
+
+    $connect->close();
 
         ?>
             </div>
