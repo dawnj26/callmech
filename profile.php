@@ -217,6 +217,9 @@ session_start();
                 <li>
                     <a href="mechAboutUs.php">ABOUT US</a>
                 </li>
+                <li>
+    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+    </li>
             </ul>
         </nav>
     </header>
@@ -227,7 +230,7 @@ session_start();
     <div class="mainbody" style="margin-top:5px;">
         <div class="d-flex flex-row-reverse" style="margin-right:15%;">
             <a><input type="submit" class="btn btn-primary btn-sm" value="Edit Profile" style="background-color:lightgrey;border:none; width:180%;padding:8px;color:black;" data-bs-toggle="modal" data-bs-target="#myModal"></a>
-            &emsp;&emsp;&emsp;&emsp;&emsp;<a href="mechLogin.php"><input type="submit" class="btn btn-primary btn-sm" value="Logout" style="background-color:#F86D1A;border:none; width:200%;padding:8px;"></a>
+            &emsp;&emsp;&emsp;&emsp;&emsp;<a href="mechLogin.php?logout=1"><input type="submit" class="btn btn-primary btn-sm" value="Logout" style="background-color:#F86D1A;border:none; width:200%;padding:8px;"></a>
         </div>
         <div class="modal" id="myModal">
             <div class="modal-dialog">
