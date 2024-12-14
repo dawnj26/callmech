@@ -1,4 +1,15 @@
 <?php
+
+if (isset($_GET['logout'])) {
+
+    session_unset();
+    session_destroy();
+}
+
+session_start();
+
+
+?>
 session_start();
 ?>
 <!DOCTYPE html>
@@ -208,6 +219,7 @@ session_start();
 
                 $_SESSION['user_id'] = $id;
                 $_SESSION['fname'] = $fname;
+                $_SESSION['user_type'] = 'user';
                 $_SESSION['lname'] = $lname;
                 $_SESSION['pfp'] = $pfp;
 
