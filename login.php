@@ -1,15 +1,5 @@
 <?php
-
-
-if (isset($_GET['logout'])) {
-
-    session_unset();
-    session_destroy();
-}
-
 session_start();
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,11 +21,18 @@ session_start();
     }
 
     body {
-        background-color: #1F1F1F;
+        background-color: #1F1F1F; /* Default background color */
+    background-image: url('img/loginbg.png'); /* Background image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-size: cover; /* Ensure the image covers the entire screen */
+    background-position: center; /* Center the image */
+    overflow: hidden; /* Prevent scrollbars if not needed */
     }
 
     .box {
-        display: flex;
+        margin-top: 150px;
+        margin-left: 200px;
+        /* display: flex; */
         justify-content: center;
         align-items: center;
         min-height: 90vh;
@@ -131,21 +128,21 @@ session_start();
 </style>
 
 <body>
-    <div class="d-flex flex-wrap justify-content-center align-item-center;" style="height:100vh;
+    <div class="d-flex flex-wrap justify-content-center align-item-center;" style="height:100vh;">
      <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='login'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='login'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            background-image: url('img/<?php echo $image ?>');background-repeat:no-repeat;background-position:center;">
+                            /* background-image: url('img/loginbg.png');background-repeat:no-repeat;background-position:center;"> */
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
         <div class="box">
             <div class="container">
@@ -153,22 +150,21 @@ session_start();
                     <form action="" method="POST">
                         <center>
                             <?php
-                            require 'config.php';
-                            $sql = "SELECT * FROM `components_images` where status='Current'";
-                            $dataset = $connect->query($sql);
-                            if ($dataset) {
-                                if ($dataset->num_rows > 0) {
-                                    while ($row = $dataset->fetch_array()) {
-                                        $image = $row['2'];
+                            // require 'config.php';
+                            // $sql = "SELECT * FROM `components_images` where status='Current'";
+                            // $dataset = $connect->query($sql);
+                            // if ($dataset) {
+                            //     if ($dataset->num_rows > 0) {
+                            //         while ($row = $dataset->fetch_array()) {
+                            //             $image = $row['2'];
                             ?>
-                                        <img src="img/<?php echo $image; ?>" width="180" height="90" alt="" name="logo">
+                                        <img src="image/NEARMELOGO.png" width="180" height="180" alt="" name="logo">
                             <?php
-                                    }
-                                }
-                            }
+                            //         }
+                            //     }
+                            // }
                             ?>
                         </center>
-                        <header>Welcome!</header>
                         <span>Sign in to your account.</span>
                 </div>
                 <div class="input-field">
@@ -211,7 +207,6 @@ session_start();
                 $pfp = $data['profile_pic'];
 
                 $_SESSION['user_id'] = $id;
-                $_SESSION['user_type'] = 'user';
                 $_SESSION['fname'] = $fname;
                 $_SESSION['lname'] = $lname;
                 $_SESSION['pfp'] = $pfp;

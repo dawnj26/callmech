@@ -30,17 +30,21 @@ session_start();
         background-color: #1F1F1F;
         overflow-x: hidden;
         overflow-y: auto;
-        color: white;
+        color:white;
+        background-image: url('img/BCKGROUND.jpg');
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; 
     }
 
     header {
-        width: 60%;
+        width: 100%;
         height: 60px;
-        background: #D9D9D9;
+        /* background: #D9D9D9; */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 40px;
+        padding: 0 10px;
         margin: 0 auto;
         margin-top: 2%;
     }
@@ -63,9 +67,11 @@ session_start();
     }
 
     .logo {
-        width: 180px;
-        margin-top: 40px;
+        width: 100px;
+        height: 100px;
+        margin-left: 20px;
     }
+
 
     nav .logo {
         display: none;
@@ -76,10 +82,15 @@ session_start();
     }
 
     nav ul li a {
-        color: #2F2F2F;
+        color: white;
         display: block;
         margin: 0;
-        padding: 12px;
+        font-size: 13px;
+        padding-right: 50px;
+        padding-left: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
         transition: 0.2s;
         text-decoration: none;
 
@@ -92,8 +103,9 @@ session_start();
     }
 
     nav ul li a.active {
-        background: #F86D1A;
-        color: #D9D9D9;
+        font-size: 20px;
+        font-weight: bold;
+        color: #F86D1A;
     }
 
     .orange {
@@ -196,19 +208,19 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='Current'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
-                ?>
-                            <img src="image/<?php echo $image; ?>">
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='Current'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
+                // ?>
+                            <img src="image/NEARMELOGO.png">
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
@@ -229,18 +241,23 @@ session_start();
                 <li>
                     <a href="userprofile.php" class="active">PROFILE</a>
                 </li>
+                
                 <li>
                     <a href="aboutus.php">ABOUT US</a>
                 </li>
+                <li>
+    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+</li>
             </ul>
         </nav>
     </header>
-    <div class="orange"></div>
-    <div class="coverphoto" style="background: #2F2F2F;width: 90%;height: 200px; margin:auto; margin-top:2%;margin-bottom:2%;"></div>
+ 
+    <!-- <div class="orange"></div> -->
+    <!-- <div class="coverphoto" style="background: #2F2F2F;width: 90%;height: 200px; margin:auto; margin-top:2%;margin-bottom:2%;"></div> -->
     <div class="mainbody" style="margin-top:5px;">
-    <div class="d-flex flex-row-reverse" style="margin-right:15%;">
-    <a href="login.php?logout=1"><input type="submit" class="btn btn-primary btn-sm" value="Logout" style="background-color:#F86D1A;border:none; width:200%;padding:8px;"></a>
-    </div>
+    <div class="d-flex justify-content-between" style="margin-left:50px; display: flex; align-items: center;">
+        <!-- User Details Section -->
+
         <?php
         require 'config.php';
         $userid = $_SESSION['user_id'];
@@ -254,88 +271,95 @@ session_start();
                 $addr = $row['3'];
                 $pic = $row['8'];
         ?>
-                <table style="width:80%; margin:auto;">
-                    <tr>
-                        <td rowspan="2" style="width:15%;">
-                            <img src="image/<?php echo $pic; ?>" alt="" srcset="" class="avatar">
-                        </td>
-                        <td style="padding:2px;">
-                            <h5><a href="mechprofile.php" style="text-decoration:none;color:#D9D9D9;"><?php echo $name; ?></a></h5>
-                            <div class="text-muted small" style="font-weight:600;color:#D9D9D9;">
-                                <?php echo $email; ?>
-                            </div>
-                            <div class="text-muted small" style="font-weight:600;color:#D9D9D9;">
-                                <?php echo $no; ?>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <br><br>
-                <div class="nearbymech">
-                    <div class="jumbotrontitle" style="margin-top:-1%;">
-                        <h1 style="color:#D9D9D9;font-size: 40px;">Current<span style="color:#F86D1A"> Location</span></h1>
-                    </div>
+        <div style="width: 50%; padding: 20px; margin-left: 5opx;">
+            <table style="width: 100%;">
+                <tr>
+                    <td rowspan="2" style="width: 25%;">
+                        <img src="image/<?php echo $pic; ?>" alt="" srcset="" class="avatar">
+                    </td>
+                    <td style="padding:2px;">
+                        <h5><a href="mechprofile.php" style="text-decoration:none;color:#D9D9D9;"><?php echo $name; ?></a></h5>
+                        <div class="text-muted small" style="font-weight:600;color:#D9D9D9;">
+                            <?php echo $email; ?>
+                        </div>
+                        <div class="text-muted small" style="font-weight:600;color:#D9D9D9;">
+                            <?php echo $no; ?>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+         
+        </div>
+
+        <!-- Map Section -->
+        <div style="width: 50%; padding: 20px;">
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+            <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+            <style>
+                #map {
+                    height: 400px;
+                    width: 100%;
+                }
+            </style>
+               <div class="nearbymech">
+                <div class="jumbotrontitle" style="margin-top:-1%;">
+                    <h1 style="color:#D9D9D9;font-size: 40px;">Current<span style="color:#F86D1A"> Location</span></h1>
                 </div>
-                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
-                <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
-                <style>
-                    #map {
-                        height: 500px;
+            </div>
+            <main>
+                <div id="map"></div>
+            </main>
+            <script>
+                const map = L.map('map');
+                // Initializes map
+                map.setView([51.505, -0.09], 13);
+                // Sets initial coordinates and zoom level
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+                // Sets map data source and associates with map
+                let marker, circle, zoomed;
+                navigator.geolocation.watchPosition(success, error);
+
+                function success(pos) {
+                    const lat = pos.coords.latitude;
+                    const lng = pos.coords.longitude;
+                    const accuracy = pos.coords.accuracy;
+                    if (marker) {
+                        map.removeLayer(marker);
+                        map.removeLayer(circle);
                     }
-                </style>
-                <main>
-                    <div id="map"></div>
-                </main>
-                <script>
-                    const map = L.map('map');
-                    // Initializes map
-                    map.setView([51.505, -0.09], 13);
-                    // Sets initial coordinates and zoom level
-                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    // Removes any existing marker and circle (new ones about to be set)
+                    marker = L.marker([lat, lng]).addTo(map);
+                    circle = L.circle([lat, lng], {
+                        radius: accuracy
                     }).addTo(map);
-                    // Sets map data source and associates with map
-                    let marker, circle, zoomed;
-                    navigator.geolocation.watchPosition(success, error);
-
-                    function success(pos) {
-                        const lat = pos.coords.latitude;
-                        const lng = pos.coords.longitude;
-                        const accuracy = pos.coords.accuracy;
-                        if (marker) {
-                            map.removeLayer(marker);
-                            map.removeLayer(circle);
-                        }
-                        // Removes any existing marker and circule (new ones about to be set)
-                        marker = L.marker([lat, lng]).addTo(map);
-                        circle = L.circle([lat, lng], {
-                            radius: accuracy
-                        }).addTo(map);
-                        // Adds marker to the map and a circle for accuracy
-                        if (!zoomed) {
-                            zoomed = map.fitBounds(circle.getBounds());
-                        }
-                        // Set zoom to boundaries of accuracy circle
-                        map.setView([lat, lng]);
-                        // Set map focus to current user position
+                    // Adds marker to the map and a circle for accuracy
+                    if (!zoomed) {
+                        zoomed = map.fitBounds(circle.getBounds());
                     }
+                    // Set zoom to boundaries of accuracy circle
+                    map.setView([lat, lng]);
+                    // Set map focus to current user position
+                }
 
-                    function error(err) {
-                        if (err.code === 1) {
-                            alert("Please allow geolocation access");
-                        } else {
-                            alert("Cannot get current location");
-                        }
+                function error(err) {
+                    if (err.code === 1) {
+                        alert("Please allow geolocation access");
+                    } else {
+                        alert("Cannot get current location");
                     }
-                </script>
+                }
+            </script>
+        </div>
         <?php
             }
-        }
-
-        ?>
-        <br><br>
+        }?>
     </div>
+</div>
+
     <!-- Site footer -->
     <footer class="site-footer">
         <div class="container" style=" margin-top:5%;">

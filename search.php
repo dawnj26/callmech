@@ -190,7 +190,7 @@ session_start();
                     <?php
                     require 'config.php';
                     $location  = $_POST['search_location'];
-                    $dataset = $connect->query("SELECT * FROM `mechanics` WHERE mechaddr LIKE'%$location%' OR mechName LIKE'%$location%'") or die("Error query");
+                    $dataset = $connect->query("SELECT * FROM `mechanics` WHERE mechaddr LIKE'%$location%'") or die("Error query");
                     if ($dataset) {
                         if ($dataset->num_rows > 0) {
                             while ($row = $dataset->fetch_array()) {

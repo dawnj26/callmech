@@ -38,7 +38,7 @@
                         while ($row = $dataset->fetch_array()) {
                             $image = $row['2'];
                 ?>
-                            background-image: url('img/<?php echo $image ?>');background-repeat:no-repeat;background-position:center;">
+                            background-image: url('img/BCKGROUND.jpg');background-repeat:no-repeat;background-position:center;">
                 <?php
                         }
                     }
@@ -48,22 +48,23 @@
         <center><div class="col-sm-7">
             <center>
             <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='Current'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
-                ?>
-                            <img src="img/<?php echo $image; ?>" width="200" height="100" alt="" name="logo">
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='Current'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
+                // ?>
+                            <img src="image/NEARMELOGO.png" width="300" height="300" alt="" name="logo">
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
-                <h3>Welcome to <strong style="color:#D9D9D9;">call<span style="color:#F86D1A">MEchanic</span></strong></h3>
-                <small style="color:#D9D9D9;">Sign in as:</small><br>
+
+                <h3>Expert Mechanics, Just Around the Corne</span></strong></h3>
+                <br><small style="color:#D9D9D9;">Sign in as:</small><br>
             </center>
             <br>
             <div class="container">

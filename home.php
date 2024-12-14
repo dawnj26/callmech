@@ -2,7 +2,7 @@
 <html>
 
 <head lang="en">
-    <script src="https://kit.fontawesome.com/78f0025f7d.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/78f0025f7d.js" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- <link rel="stylesheet" href="mainstyle.css"> -->
@@ -30,13 +30,13 @@
     }
 
     header {
-        width: 60%;
+        width: 100%;
         height: 60px;
-        background: #D9D9D9;
+        /* background: #D9D9D9; */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 40px;
+        padding: 0 10px;
         margin: 0 auto;
         margin-top: 2%;
     }
@@ -52,8 +52,9 @@
     }
 
     .logo {
-        width: 180px;
-        margin-top: 40px;
+        width: 100px;
+        height: 100px;
+        margin-left: 20px;
     }
 
     nav .logo {
@@ -65,15 +66,19 @@
     }
 
     nav ul li a {
-        color: #2F2F2F;
+        color: white;
         display: block;
         margin: 0;
-        padding: 12px;
+        font-size: 13px;
+        padding-right: 50px;
+        padding-left: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
         transition: 0.2s;
         text-decoration: none;
 
     }
-
     nav ul li a:hover {
         background: #F86D1A;
         color: #D9D9D9;
@@ -81,17 +86,18 @@
     }
 
     nav ul li a.active {
-        background: #F86D1A;
-        color: #D9D9D9;
+        font-size: 20px;
+        font-weight: bold;
+        color: #F86D1A;
     }
-
+/* 
     .orange {
         background: #F86D1A;
         width: 23%;
         height: 65px;
         margin-left: 15%;
         margin-top: -2%;
-    }
+    } */
 
     .mainbody {
         margin-top: 0px;
@@ -136,7 +142,7 @@
             width: 60%;
             height: 100vh;
             transition: 0.2s;
-            background-color: #2F2F2F;
+            /* background-color: #2F2F2F; */
             box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.05);
         }
 
@@ -173,21 +179,21 @@
 <body>
     <header>
         <div class="logo">
-            <?php
-            require 'config.php';
-            $sql = "SELECT * FROM `components_images` where status='Current'";
-            $dataset = $connect->query($sql);
-            if ($dataset) {
-                if ($dataset->num_rows > 0) {
-                    while ($row = $dataset->fetch_array()) {
-                        $image = $row['2'];
-            ?>
-                        <img src="image/<?php echo $image; ?>">
-            <?php
-                    }
-                }
-            }
-            ?>
+        <?php
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='Current'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
+                ?>
+                            <img src="image/NEARMELOGO.png">
+                <?php
+                //         }
+                //     }
+                // }
+                ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
         <nav>
@@ -195,35 +201,36 @@
                 <img src="img/logo.png" alt="">
             </div>
             <center>
-                <ul>
-                    <li>
-                        <a href="home.php" class="active">HOME</a>
-                    </li>
-                    <li>
-                        <a href="mech.php">MECHANIC</a>
-                    </li>
-                    <li>
-                        <a href="forum.php">ON ROAD HELP</a>
-                    </li>
-                    <li>
-                        <a href="userprofile.php">PROFILE</a>
-                    </li>
-                    </li>
-                    <li>
-                        <a href="aboutus.php">ABOUT US</a>
-                    </li>
-                    <li>
-                        <a href="notifications.php"><i class="fas fa-bell"></i></a>
-                    </li>
-                </ul>
+            <ul>
+                <li>
+                    <a href="home.php" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="mech.php">MECHANIC</a>
+                </li>
+                <li>
+                    <a href="forum.php">ON ROAD HELP</a>
+                </li>
+                <li>
+                    <a href="userprofile.php">PROFILE</a>
+                </li>
+          
+                </li>
+                <li>
+                    <a href="aboutus.php">ABOUT US</a>
+                </li>
+                <li>
+    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+</li>
+            </ul>
             </center>
         </nav>
     </header>
     <div class="orange"></div>
     <div class="mainbody">
         <div class="jumbotrontitle">
-            <h1 style="color:#D9D9D9;font-size: 80px; text-shadow: 1px 1px 1px #F86D1A;">CALL<span style="color:#F86D1A; text-shadow: 1px 1px 2px #D9D9D9 ;">MECHANIC</span></h1>
-            <p style="color:#D9D9D9;font-size: 20px; margin-left:25px; margin-top:-1.5%; text-shadow: 1px 1px 1px pink;">we keep your cars on the road</p>
+            <h1 style="color:#D9D9D9;font-size: 80px; text-shadow: 1px 1px 1px #F86D1A;">Near<span style="color:#F86D1A; text-shadow: 1px 1px 2px #D9D9D9 ;">ME</span></h1>
+            <p style="color:#D9D9D9;font-size: 20px; margin-top:-1.5%; text-shadow: 1px 1px 1px pink;">Expert Mechanics, Just Around the Corner</p>
             <div class="buttn">
                 <button type="button" class="btn btn-primary btn-lg" style="background-color:#F86D1A;border:none;"><a href="mech.php" style="text-decoration:none; color:#D9D9D9;">Look for a mechanic</a></button>
             </div>
@@ -250,52 +257,48 @@
         </main>
         <script>
             const map = L.map('map');
-
-            // Initialize default view (can be anywhere, will be updated)
-            map.setView([0, 0], 2);
-
+            // Initializes map
+            map.setView([51.505, -0.09], 13);
+            // Sets initial coordinates and zoom level
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
+            // Sets map data source and associates with map
+            let marker, circle, zoomed;
+            navigator.geolocation.watchPosition(success, error);
+           
+            
 
-            // Get current position
-            if ("geolocation" in navigator) {
-                navigator.geolocation.getCurrentPosition(
-                    function(position) {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-                        const accuracy = position.coords.accuracy;
+            function success(pos) {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                const accuracy = pos.coords.accuracy;
+                if (marker) {
+                    map.removeLayer(marker);
+                    map.removeLayer(circle);
+                }
+                // Removes any existing marker and circule (new ones about to be set)
+                // remove any exisitong marker and circule( new ones about to be set)
+                marker = L.marker([lat, lng]).addTo(map);
+                circle = L.circle([lat, lng], {
+                    radius: accuracy
+                }).addTo(map);
+                // Adds marker to the map and a circle for accuracy
+                if (!zoomed) {
+                    zoomed = map.fitBounds(circle.getBounds());
+                }
+                // Set zoom to boundaries of accuracy circle
+                map.setView([lat, lng]);
+                // Set map focus to current user position
+            }
 
-                        // Center map on location
-                        map.setView([lat, lng], 13);
-
-                        // Add marker
-                        const marker = L.marker([lat, lng]).addTo(map)
-                            .bindPopup('You are here!').openPopup();
-
-                        // Add accuracy circle
-                        const circle = L.circle([lat, lng], {
-                            radius: accuracy,
-                            color: 'blue',
-                            fillColor: '#3333ff',
-                            fillOpacity: 0.2
-                        }).addTo(map);
-
-                        // Fit map to circle bounds
-                        map.fitBounds(circle.getBounds());
-                    },
-                    function(error) {
-                        console.error("Error getting location:", error.message);
-                        alert("Unable to get your location");
-                    }, {
-                        enableHighAccuracy: true,
-                        timeout: 5000,
-                        maximumAge: 0
-                    }
-                );
-            } else {
-                alert("Geolocation is not supported by your browser");
+            function error(err) {
+                if (err.code === 1) {
+                    alert("Please allow geolocation access");
+                } else {
+                    alert("Cannot get current location");
+                }
             }
         </script>
         <div class="row" style="margin-top:5%;">
@@ -318,7 +321,7 @@
                             <h5><a href="mechprofile.php" style="text-decoration:none;color:#D9D9D9;">Service Center</a></h5>
                             <div class="text-muted small" style="font-weight:600;color:#D9D9D9;">
                                 where you can have products, equipment, or vehicles checked and repaired and where you can buy parts
-
+                               
                             </div>
                         </td>
                     </tr>
@@ -327,7 +330,7 @@
                             <h5><a href="mechprofile.php" style="text-decoration:none;color:#D9D9D9;">Car Service</a></h5>
                             <div class="text-muted small" style="font-weight:600;color:#D9D9D9;">
                                 A car service is a maintenance check-up that's carried out at set time intervals (at least every year) or after the vehicle has travelled a certain number of miles.
-
+                               
                             </div>
                         </td>
                         <td>
