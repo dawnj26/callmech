@@ -239,7 +239,7 @@ session_start();
     <div class="coverphoto" style="background: #2F2F2F;width: 90%;height: 200px; margin:auto; margin-top:2%;margin-bottom:2%;"></div>
     <div class="mainbody" style="margin-top:5px;">
     <div class="d-flex flex-row-reverse" style="margin-right:15%;">
-    <a href="login.php"><input type="submit" class="btn btn-primary btn-sm" value="Logout" style="background-color:#F86D1A;border:none; width:200%;padding:8px;"></a>
+    <a href="login.php?logout=1"><input type="submit" class="btn btn-primary btn-sm" value="Logout" style="background-color:#F86D1A;border:none; width:200%;padding:8px;"></a>
     </div>
         <?php
         require 'config.php';
