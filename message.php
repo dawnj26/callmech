@@ -277,9 +277,11 @@ session_start();
     <div class="mainbody">
         <?php
         require 'config.php';
+        require 'utils/utils.php';
 
         $mechname = $_GET['mechname'];
         $username = $_SESSION['fname'] . " " . $_SESSION['lname'];
+        
         ?>
         <div class="cnt">
             <center>
@@ -287,16 +289,21 @@ session_start();
                 <div class="xxd" style="width:100% ;">
                     <?php
                     if (isset($_POST['send'])) {
+                        $mechId = $_GET['mechid'];
+      
+                        createNotification($mechId, "$username sent a message", 'chat');
                         $mechname = $_GET['mechname'];
                         $username = $_SESSION['fname'] . " " . $_SESSION['lname'];
                         $message = $_POST['message_content'];
-                        $dataset = $connect->query("INSERT INTO `messages`(`msg_sender`, `msg_reciever`, `msg_content`) VALUES ('$username','$mechname','$message')") or die("Error query");
+                        $dataset = $connect->query("INSERT INTO `messages`(`msg_sender`, `msg_receiver`, `msg_content`) VALUES ('$username','$mechname','$message')") or die("Error query");
                     }
                     ?>
 
                     <?php
-                    $sql = ("SELECT * FROM messages WHERE (msg_sender = '$username 'AND msg_reciever = '$mechname') OR (msg_sender = '$mechname' AND msg_reciever = '$username')");
+
+                    $sql = "SELECT * FROM messages WHERE (msg_sender = '$username 'AND msg_receiver = '$mechname') OR (msg_sender = '$mechname' AND msg_receiver = '$username')";
                     $dataset = $connect->query($sql);
+
                     if ($dataset) {
                         if ($dataset->num_rows > 0) {
                             while ($row = $dataset->fetch_array()) { {
