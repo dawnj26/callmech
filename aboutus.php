@@ -243,8 +243,8 @@
             <div class="container" style=" margin-top:5%;">
                 <center>
                     <hr>
-                    <p style="color:#D9D9D9;">Copyright &copy; 2017 All Rights Reserved by
-                    <span style="color:#F86D1A;">callmechanic</span>.</p>
+                    <p style="color:#D9D9D9;">Copyright &copy; 2024 All Rights Reserved by
+                    <span style="color:#F86D1A;">NearMe</span>.</p>
                 </center>
             </div>
         </footer>
