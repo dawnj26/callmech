@@ -257,48 +257,52 @@
         </main>
         <script>
             const map = L.map('map');
-            // Initializes map
-            map.setView([51.505, -0.09], 13);
-            // Sets initial coordinates and zoom level
+            
+            // Initialize default view (can be anywhere, will be updated)
+            map.setView([0, 0], 2);
+
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
-            // Sets map data source and associates with map
-            let marker, circle, zoomed;
-            navigator.geolocation.watchPosition(success, error);
-           
-            
 
-            function success(pos) {
-                const lat = pos.coords.latitude;
-                const lng = pos.coords.longitude;
-                const accuracy = pos.coords.accuracy;
-                if (marker) {
-                    map.removeLayer(marker);
-                    map.removeLayer(circle);
-                }
-                // Removes any existing marker and circule (new ones about to be set)
-                // remove any exisitong marker and circule( new ones about to be set)
-                marker = L.marker([lat, lng]).addTo(map);
-                circle = L.circle([lat, lng], {
-                    radius: accuracy
-                }).addTo(map);
-                // Adds marker to the map and a circle for accuracy
-                if (!zoomed) {
-                    zoomed = map.fitBounds(circle.getBounds());
-                }
-                // Set zoom to boundaries of accuracy circle
-                map.setView([lat, lng]);
-                // Set map focus to current user position
-            }
+            // Get current position
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        const accuracy = position.coords.accuracy;
 
-            function error(err) {
-                if (err.code === 1) {
-                    alert("Please allow geolocation access");
-                } else {
-                    alert("Cannot get current location");
-                }
+                        // Center map on location
+                        map.setView([lat, lng], 13);
+
+                        // Add marker
+                        const marker = L.marker([lat, lng]).addTo(map)
+                            .bindPopup('You are here!').openPopup();
+
+                        // Add accuracy circle
+                        const circle = L.circle([lat, lng], {
+                            radius: accuracy,
+                            color: 'blue',
+                            fillColor: '#3333ff',
+                            fillOpacity: 0.2
+                        }).addTo(map);
+
+                        // Fit map to circle bounds
+                        map.fitBounds(circle.getBounds());
+                    },
+                    function(error) {
+                        console.error("Error getting location:", error.message);
+                        alert("Unable to get your location");
+                    }, {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    }
+                );
+            } else {
+                alert("Geolocation is not supported by your browser");
             }
         </script>
         <div class="row" style="margin-top:5%;">
@@ -385,8 +389,8 @@
         <div class="container" style=" margin-top:5%;">
             <center>
                 <hr>
-                <p style="color:#D9D9D9;">Copyright &copy; 2017 All Rights Reserved by
-                    <span style="color:#F86D1A;">callmechanic</span>.
+                <p style="color:#D9D9D9;">Copyright &copy; 2024 All Rights Reserved by
+                    <span style="color:#F86D1A;">NearMe</span>.
                 </p>
             </center>
         </div>
