@@ -1,5 +1,15 @@
 <?php
+
+
+if (isset($_GET['logout'])) {
+
+    session_unset();
+    session_destroy();
+}
+
 session_start();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -201,6 +211,7 @@ session_start();
                 $pfp = $data['profile_pic'];
 
                 $_SESSION['user_id'] = $id;
+                $_SESSION['user_type'] = 'user';
                 $_SESSION['fname'] = $fname;
                 $_SESSION['lname'] = $lname;
                 $_SESSION['pfp'] = $pfp;
