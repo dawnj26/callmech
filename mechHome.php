@@ -179,6 +179,11 @@ session_start();
             margin-bottom: 5px;
         }
     }
+    .pfp {
+        width: 40px;
+        height: 40px;
+
+    }
 </style>
 
 <body>
@@ -294,12 +299,12 @@ session_start();
         $user_pic=$post_row['profile_pic'];
     ?>
         <div class="container-sm">
-            <div class="card w-50 mx-auto my-3">
-                <div class="card-body">
+            <div class="card w-50 mx-auto my-3" style="background-color: rgba(255, 255, 255, 0.1); color:white;">
+                <div class="card-body" >
                     <table>
                         <tr>
-                            <td><a href="#"><img src="image/<?php echo $user_pic; ?>" alt="" srcset="" class="rounded-circle mx-2" width="40" height="40"></a></td>
-                            <td> <a href="#"><?php echo $username; ?></a>
+                            <td><a href="#"><img src="image/<?php echo $user_pic; ?>" alt="" srcset="" class="rounded-circle pfp" ></a></td>
+                            <td> <a href="#" style="text-decoration:none; color: white;"><?php echo $username; ?></a>
                                 <br>
                                 <div class="label">
                                     <?php
@@ -355,8 +360,8 @@ if (isset($_POST['comment'])) {
                                 <textarea class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" rows="1" name="comment_content" placeholder="Type your comment..."></textarea>
                             </div>
                         </div>
-                        <div class="btn-text-right">
-                            <input type="submit" name="comment" value="Reply">
+                        <div >
+                            <input class="btn " style="text-decoration:none; color:#D9D9D9; background-color:#F86D1A" type="submit" name="comment" value="Reply">
                         </div>
                     </form>
                     <hr>
@@ -371,8 +376,8 @@ if (isset($_POST['comment'])) {
                     ?>
                         <table>
                             <tr>
-                                <td><a href="#"><img src="image/<?php echo $mechpic; ?>" alt="" srcset="" class="rounded-circle mx-2" width="40" height="40"></a></td>
-                                <td><a href="#"><?php echo $comment_by; ?></a> : <?php echo $comment_row['content']; ?>
+                                <td><a href="#"><img src="image/<?php echo $mechpic; ?>" alt="" srcset="" class="rounded-circle mx-2 pfp" ></a></td>
+                                <td><a href="#"style="text-decoration:none; color: white;"><?php echo $comment_by; ?></a> : <?php echo $comment_row['content']; ?>
                                     <div class="label">
                                         <?php
                                         $days = floor($comment_row['TimeSpent'] / (60 * 60 * 24));
