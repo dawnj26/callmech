@@ -285,6 +285,7 @@ session_start();
                         <div class="text-muted small" style="font-weight:600;color:#D9D9D9;">
                             <?php echo $no; ?>
                         </div>
+                        <a href="login.php?logout=1" class="btn" style="background-color:#F86D1A; color:white; padding: 5px 20px; text-decoration: none; display: inline-block; margin-top: 10px; border-radius: 5px;">Log out</a>
                     </td>
                 </tr>
             </table>
