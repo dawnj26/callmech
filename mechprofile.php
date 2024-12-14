@@ -199,10 +199,10 @@ session_start();
             </div>
             <ul>
                 <li>
-                    <a href="home.php">HOME</a>
+                    <a href="mechHome.php">HOME</a>
                 </li>
                 <li>
-                    <a href="mech.php" class="active">MECHANIC</a>
+                    <a href="mechMech.php" >MECHANIC</a>
                 </li>
                 <li>
                     <a href="forum.php">ON ROAD HELP</a>
@@ -211,8 +211,11 @@ session_start();
                     <a href="aboutus.php">ABOUT US</a>
                 </li>
                 <li>
-                    <a href="userprofile.php">PROFILE</a>
+                    <a href="mechprofile.php"class="active">PROFILE</a>
                 </li>
+                <li>
+    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+    </li>
             </ul>
         </nav>
     </header>
@@ -224,8 +227,9 @@ session_start();
     if (!$mechanicID) {
         $mechanicID = $_GET['mechID'];
     }
-
+    
     $_SESSION['mechID'] = $mechanicID;
+    
 
     $sql = "SELECT * FROM `mechanics` WHERE mechid=$mechanicID";
 
@@ -279,8 +283,7 @@ session_start();
                                 <p>contact us: <span style="color:#F86D1A;"><?php echo $no; ?></span> <br>
                                     <span style="color:#F86D1A;"><?php echo $addr; ?></span><br>
                                     Average Rating: <span style="color:#F86D1A;"> <?php
-                                                                                    require 'config.php';
-                                                                                    $mechanicID = $_GET['mechID'];
+                                                                                    
                                                                                     $query = "SELECT AVG(ratings) as avg_rating FROM ratings WHERE mechanic_id = $mechanicID";
                                                                                     $result = $connect->query($query) or die("Error query");
                                                                                     if ($result) {

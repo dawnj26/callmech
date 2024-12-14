@@ -185,6 +185,9 @@
                     <li>
                         <a href="mechAboutUs.php"  class="active">ABOUT US</a>
                     </li>
+                    <li>
+    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+    </li>
                 </ul>
             </nav>
         </header>

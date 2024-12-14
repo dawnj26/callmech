@@ -261,6 +261,9 @@
                     <li>
                         <a href="mechAboutUs.php">ABOUT US</a>
                     </li>
+                    <li>
+    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+    </li>
                 </ul>
             </nav>
         </header>
@@ -279,8 +282,19 @@
     <center>
         <div class="chathead" style="background:#3c3c3c;padding: 20px;border-radius:5px; color:white; " ><?php echo $username?></div> <br>
         <div class="xxd" style="width:100%; display: flex; flex-direction: column; max-height: 400px; overflow-y: auto; padding-bottom: 20px;">
+        <?php
+
+        if (isset($_POST['send'])) {
+            $mechname = $_SESSION['mechname']; // session the name of mechanic
+            $username = $_GET['username'];
+            $message = $_POST['message_content'];
+            $dataset = $connect->query("INSERT INTO `messages`(`msg_sender`, `msg_receiver`, `msg_content`) VALUES ('$mechname','$username','$message')") or die("Error query");
+        
+        }
+        ?>
+            
             <?php
-            $sql = ("SELECT * FROM messages WHERE (msg_sender = '$username' AND msg_reciever = '$mechname') OR (msg_sender = '$mechname' AND msg_reciever = '$username')");
+            $sql = ("SELECT * FROM messages WHERE (msg_sender = '$username' AND msg_receiver = '$mechname') OR (msg_sender = '$mechname' AND msg_receiver = '$username')");
             $dataset = $connect->query($sql);
             if ($dataset) {
                 if ($dataset->num_rows > 0) {
@@ -295,19 +309,11 @@
                     }
                 }
             }
+            $connect->close();
             ?>
         </div>
 
-        <?php
-        require 'config.php';
-        if (isset($_POST['send'])) {
-            $mechname = $_SESSION['mechname']; // session the name of mechanic
-            $username = $_GET['username'];
-            $message = $_POST['message_content'];
-            $dataset = $connect->query("INSERT INTO `messages`(`msg_sender`, `msg_reciever`, `msg_content`) VALUES ('$mechname','$username','$message')") or die("Error query");
-            $connect->close();
-        }
-        ?>
+        
         
         <form action="" method="POST">
             <div class="flex justify-center">

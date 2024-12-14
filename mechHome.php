@@ -238,9 +238,9 @@ session_start();
                     <li>
                         <a href="mechAboutUs.php">ABOUT US</a>
                     </li>
-                <!-- <li>
+                <li>
     <a href="notifications.php"><i class="fas fa-bell"></i></a>
-    </li> -->
+    </li>
 </ul>
             </li>
             </ul>

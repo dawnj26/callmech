@@ -219,6 +219,9 @@
                     <li>
                         <a href="mechAboutUs.php">ABOUT US</a>
                     </li>
+                    <li>
+    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+    </li>
                 </ul>
             </nav>
         </header>
@@ -230,7 +233,9 @@
 
         $username = $_SESSION['mechname'];
 
-        $sql = ("SELECT DISTINCT msg_sender FROM messages WHERE msg_reciever='$username'");
+        
+        $sql = "SELECT DISTINCT msg_sender FROM messages WHERE msg_receiver='$username'";
+        // echo $sql;
         $dataset = $connect->query( $sql);
         while ($row = $dataset->fetch_assoc()) {
             $sender=$row["msg_sender"]; 
