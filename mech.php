@@ -31,16 +31,20 @@ session_start();
         overflow-x: hidden;
         overflow-y: auto;
         color:white;
+        background-image: url('img/BCKGROUND.jpg');
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; 
     }
 
     header {
-        width: 60%;
+        width: 100%;
         height: 60px;
-        background: #D9D9D9;
+        /* background: #D9D9D9; */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 40px;
+        padding: 0 10px;
         margin: 0 auto;
         margin-top: 2%;
     }
@@ -50,8 +54,9 @@ session_start();
     }
 
     .logo {
-        width: 180px;
-        margin-top: 40px;
+        width: 100px;
+        height: 100px;
+        margin-left: 20px;
     }
 
     nav .logo {
@@ -63,10 +68,15 @@ session_start();
     }
 
     nav ul li a {
-        color: #2F2F2F;
+        color: white;
         display: block;
         margin: 0;
-        padding: 12px;
+        font-size: 13px;
+        padding-right: 50px;
+        padding-left: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
         transition: 0.2s;
         text-decoration: none;
 
@@ -79,8 +89,9 @@ session_start();
     }
 
     nav ul li a.active {
-        background: #F86D1A;
-        color: #D9D9D9;
+        font-size: 20px;
+        font-weight: bold;
+        color: #F86D1A;
     }
 
     .orange {
@@ -97,7 +108,16 @@ session_start();
 
     table {
         width: 100%;
+       
     }
+
+    .table-container {
+        max-height: 400px;
+        overflow-y: auto;
+        display: block;
+        margin-top: 50px;
+    }
+
     .input-field .input {
         height: 45px;
         width: 87%;
@@ -169,19 +189,19 @@ session_start();
 <header>
         <div class="logo">
         <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='Current'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='Current'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            <img src="image/<?php echo $image; ?>">
+                            <img src="image/NEARMELOGO.png">
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
@@ -202,26 +222,31 @@ session_start();
                 <li>
                     <a href="userprofile.php">PROFILE</a>
                 </li>
+              
                 <li>
                     <a href="aboutus.php">ABOUT US</a>
                 </li>
+                <li>
+    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+</li>
             </ul>
         </nav>
     </header>
 
-    <div class="orange"></div>
+    <!-- <div class="orange"></div> -->
     <div class="mainbody">
-        <img src="img/rc.png" style="opacity:0.05; position:fixed; width:70%; margin-left:25%; margin-top:0%;">
+        <!-- <img src="img/rc.png" style="opacity:0.05; position:fixed; width:70%; margin-left:25%; margin-top:0%;"> -->
         <div class="row" style="margin-top:2%;">
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
                 <center>
                     <form method="POST" action="search.php">
-                        <input type="text" name="search_location" placeholder="Find nearby mechanic in your area ..." style="border:none; width:60%;padding:5px;">
-                        <input type="submit" value="search" name="search" style="background-color:#F86D1A;border:none; width:15%;padding:5px;" class="btn btn-primary">
+                        <input type="text" name="search_location" placeholder="Find nearby mechanic in your area ..." style="border:none; width:60%;padding:8px;">
+                        <input type="submit" value="search" name="search" style="background-color:#F86D1A;border:none; width:15%;padding:8px;" class="btn btn-primary">
                     </form>
                     <center>
+                        <div class="table-container">
                         <table style="width:100%;">
                             <?php
                             require 'config.php';
@@ -277,6 +302,7 @@ session_start();
                             }
                             ?>
                         </table>
+                        
             </div>
             <div class="col-md-2">
             </div>

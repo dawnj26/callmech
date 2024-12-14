@@ -130,25 +130,25 @@
 
 <body>
 <div class="d-flex flex-wrap justify-content-center align-item-center;" style="<?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='register'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='register'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            background-image: url('img/<?php echo $image ?>');background-repeat:no-repeat;background-position:center;">
+                            background-image: url('img/BCKGROUND.jpg');background-repeat:no-repeat;background-position:center; background-size: cover;">
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
     <div class="box">
         <div class="container">
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="top">
-                    <center><img src="img/logo.png" width="180" height="90" alt=""></center>
+                    <center><img src="image/NEARMELOGO.png" width="200" height="200" alt=""></center>
                     <header>Create New Account</header>
                     <span>Already a member? &nbsp;<b><a href="mechLogin.php">Login.</a></b></span>
                 </div>

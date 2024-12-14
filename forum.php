@@ -9,7 +9,6 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/w1.png">
-    <!-- <link rel="stylesheet" href="mainstyle.css"> -->
     <link rel="stylesheet" href="boxicons-master/css/boxicons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -30,25 +29,37 @@ session_start();
     }
 
     body {
-        background-color: #1F1F1F;
-        overflow-x: hidden;
-    }
+    background: rgba(31, 31, 31, 0.9); /* Semi-transparent background */
+    background-attachment: fixed; /* Fix the background position */
+    background-image: url("img/BCKGROUND.jpg");
+    background-size: cover; /* Ensures the background covers the entire screen */
+    margin: 0; /* Removes default margin */
+    padding-top: 80px; /* Removes default padding */
+    height: 100vh; /* Makes the body take the full viewport height */
+}
 
-    header {
-        width: 60%;
-        height: 60px;
-        background: #D9D9D9;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 40px;
-        margin: 0 auto;
-        margin-top: 2%;
-    }
 
-    .card {
-        background-color: #2F2F2F;
-    }
+header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+    background: rgba(31, 31, 31, 0.9);
+
+}
+
+.card {
+    background-color: #2F2F2F;
+    margin-top: 10px; 
+}
+
 
     input[type=submit] {
         border: none;
@@ -83,8 +94,9 @@ session_start();
     }
 
     .logo {
-        width: 180px;
-        margin-top: 40px;
+        width: 100px;
+        height: 100px;
+        margin-left: 20px;
     }
 
     nav .logo {
@@ -96,10 +108,15 @@ session_start();
     }
 
     nav ul li a {
-        color: #2F2F2F;
+        color: white;
         display: block;
         margin: 0;
-        padding: 12px;
+        font-size: 13px;
+        padding-right: 50px;
+        padding-left: 50px;
+        padding-top: 40px;
+        padding-bottom: 20px;
+        
         transition: 0.2s;
         text-decoration: none;
 
@@ -112,9 +129,11 @@ session_start();
     }
 
     nav ul li a.active {
-        background: #F86D1A;
-        color: #D9D9D9;
+        font-size: 20px;
+        font-weight: bold;
+        color: #F86D1A;
     }
+
 
     .orange {
         background: #F86D1A;
@@ -181,19 +200,19 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='Current'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='Current'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            <img class="imglogo"src="image/<?php echo $image; ?>">
+                            <img class="imglogo"src="image/NEARMELOGO.png">
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
@@ -215,23 +234,24 @@ session_start();
                 <li>
                     <a href="userprofile.php">PROFILE</a>
                 </li>
-                <li>
-                    <a href="notification.php">NOTIFICATION</a>
-                </li>
+                
                 <li>
                     <a href="aboutus.php">ABOUT US</a>
                 </li>
+                <li>
+    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+</li>
             </ul>
             </center>
         </nav>
     </header>
-    <div class="orange"></div>
+    <!-- <div class="orange"></div> -->
 
     <?php
     // session_start();
     ?>
     <!-- post field -->
-    <div class="container-sm">
+    <div class="container-sm" style="margin-top: 50px">
         <div class="card w-50 mx-auto my-3">
             <div class="card-body" style="color:white;">
                 <form method="POST">
@@ -341,6 +361,8 @@ session_start();
                         </div>
                     </form> -->
                     <!-- displaying comment -->
+                    <p>Comments</p>
+                    <div class = "comments">
                     <?php
                     
                     require 'config.php';
@@ -350,6 +372,7 @@ session_start();
                         $mechname = $comment_row['mechName'];
                         $mech_pfp=$comment_row['mech_pfp'];
                     ?>  
+                   
                         <table style="color:white; width:100%;" >
                             <tr>
                                 <td width=5%><a href="#"><img src="image/<?php echo $mech_pfp; ?>" alt="" srcset="" class="rounded-circle mx-2" width="40" height="40"></a></td>
@@ -388,6 +411,7 @@ session_start();
                     <?php
                     }
                     ?>
+                    </div>
                 </div>
             </div>
         </div>

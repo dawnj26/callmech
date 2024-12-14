@@ -29,23 +29,30 @@ session_start();
         text-decoration: none;
     }
 
+ 
     body {
         background-color: #1F1F1F;
         overflow-x: hidden;
         overflow-y: auto;
+        color:white;
+        background-image: url('img/BCKGROUND.jpg');
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; 
     }
 
     header {
-        width: 60%;
+        width: 100%;
         height: 60px;
-        background: #D9D9D9;
+        /* background: #D9D9D9; */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 40px;
+        padding: 0 10px;
         margin: 0 auto;
         margin-top: 2%;
     }
+
 
     .mesbox {
         width: 100%;
@@ -88,15 +95,19 @@ session_start();
     }
 
     nav ul li a {
-        color: #2F2F2F;
+        color: white;
         display: block;
-        margin: 0 2px;
-        padding: 15px 20px;
+        margin: 0;
+        font-size: 13px;
+        padding-right: 50px;
+        padding-left: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
         transition: 0.2s;
         text-decoration: none;
 
     }
-
     nav ul li a:hover {
         background: #F86D1A;
         color: #D9D9D9;
@@ -104,8 +115,9 @@ session_start();
     }
 
     nav ul li a.active {
-        background: #F86D1A;
-        color: #D9D9D9;
+        font-size: 20px;
+        font-weight: bold;
+        color: #F86D1A;
     }
 
     .orange {
@@ -140,11 +152,7 @@ session_start();
         margin-top: 5%;
     }
 
-    body {
-        background: #222225;
-        color: white;
-        margin: 100px auto;
-    }
+
 
     .rating {
         display: flex;
@@ -236,19 +244,19 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='Current'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='Current'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            <img src="image/<?php echo $image; ?>">
+                            <img src="image/NEARMELOGO.png">
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
@@ -273,15 +281,13 @@ session_start();
             </ul>
         </nav>
     </header>
-    <div class="orange"></div>
+    <!-- <div class="orange"></div> -->
     <div class="mainbody">
         <?php
         require 'config.php';
-        require 'utils/utils.php';
 
         $mechname = $_GET['mechname'];
         $username = $_SESSION['fname'] . " " . $_SESSION['lname'];
-        
         ?>
         <div class="cnt">
             <center>
@@ -289,21 +295,16 @@ session_start();
                 <div class="xxd" style="width:100% ;">
                     <?php
                     if (isset($_POST['send'])) {
-                        $mechId = $_GET['mechid'];
-      
-                        createNotification($mechId, "$username sent a message", 'chat');
                         $mechname = $_GET['mechname'];
                         $username = $_SESSION['fname'] . " " . $_SESSION['lname'];
                         $message = $_POST['message_content'];
-                        $dataset = $connect->query("INSERT INTO `messages`(`msg_sender`, `msg_receiver`, `msg_content`) VALUES ('$username','$mechname','$message')") or die("Error query");
+                        $dataset = $connect->query("INSERT INTO `messages`(`msg_sender`, `msg_reciever`, `msg_content`) VALUES ('$username','$mechname','$message')") or die("Error query");
                     }
                     ?>
 
                     <?php
-
-                    $sql = "SELECT * FROM messages WHERE (msg_sender = '$username 'AND msg_receiver = '$mechname') OR (msg_sender = '$mechname' AND msg_receiver = '$username')";
+                    $sql = ("SELECT * FROM messages WHERE (msg_sender = '$username 'AND msg_reciever = '$mechname') OR (msg_sender = '$mechname' AND msg_reciever = '$username')");
                     $dataset = $connect->query($sql);
-
                     if ($dataset) {
                         if ($dataset->num_rows > 0) {
                             while ($row = $dataset->fetch_array()) { {

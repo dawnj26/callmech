@@ -24,33 +24,24 @@ session_start();
     body {
         background-color: #1F1F1F;
         overflow-x: hidden;
-        overflow-y: auto;
-        color: white;
     }
 
     header {
-        width: 60%;
+        width: 100%;
         height: 60px;
-        background: #D9D9D9;
+        /* background: #D9D9D9; */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 40px;
+        padding: 0 10px;
         margin: 0 auto;
         margin-top: 2%;
     }
 
-    * {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        list-style: none;
-        text-decoration: none;
-    }
-
-    body {
-        background-color: #1F1F1F;
+    .jumbotrontitle {
+        width: 100%;
+        margin-top: 13%;
+        margin-left: 10%;
     }
 
     img {
@@ -58,8 +49,9 @@ session_start();
     }
 
     .logo {
-        width: 180px;
-        margin-top: 40px;
+        width: 100px;
+        height: 100px;
+        margin-left: 20px;
     }
 
     nav .logo {
@@ -71,15 +63,19 @@ session_start();
     }
 
     nav ul li a {
-        color: #2F2F2F;
+        color: white;
         display: block;
         margin: 0;
-        padding: 12px;
+        font-size: 13px;
+        padding-right: 50px;
+        padding-left: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
         transition: 0.2s;
         text-decoration: none;
 
     }
-
     nav ul li a:hover {
         background: #F86D1A;
         color: #D9D9D9;
@@ -87,20 +83,27 @@ session_start();
     }
 
     nav ul li a.active {
-        background: #F86D1A;
-        color: #D9D9D9;
+        font-size: 20px;
+        font-weight: bold;
+        color: #F86D1A;
     }
-
+/* 
     .orange {
         background: #F86D1A;
         width: 23%;
         height: 65px;
         margin-left: 15%;
         margin-top: -2%;
-    }
+    } */
 
     .mainbody {
         margin-top: 0px;
+    }
+
+    .car {
+        width: 60%;
+        float: right;
+        margin-top: -25%;
     }
 
     .jumbotrontitle {
@@ -113,33 +116,12 @@ session_start();
         font-size: 100px;
     }
 
-    .buttn {
-        margin-top: 3%;
-        width: 50%;
-    }
-
     table {
         width: 100%;
     }
 
-    .coverphoto {
-        width: 80%;
-        height: 100px;
-    }
-
     .backbutton {
         padding: 10px;
-    }
-
-    .avatar {
-        vertical-align: middle;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-    }
-
-    h2 {
-        color: white;
     }
 
     @media only screen and (max-width: 1100px) {
@@ -157,7 +139,7 @@ session_start();
             width: 60%;
             height: 100vh;
             transition: 0.2s;
-            background-color: #2F2F2F;
+            /* background-color: #2F2F2F; */
             box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.05);
         }
 
@@ -195,20 +177,19 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` WHERE status = 'Current'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='Current'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            <img src="image/<?php echo $image; ?>">
+                            <img src="image/NEARMELOGO.png">
                 <?php
-                        }
-                    }
-                }
-                
+                //         }
+                //     }
+                // }
                 ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
@@ -218,10 +199,10 @@ session_start();
             </div>
             <ul>
                 <li>
-                    <a href="mechHome.php">HOME</a>
+                    <a href="home.php">HOME</a>
                 </li>
                 <li>
-                    <a href="mech.php" >MECHANIC</a>
+                    <a href="mech.php" class="active">MECHANIC</a>
                 </li>
                 <li>
                     <a href="forum.php">ON ROAD HELP</a>
@@ -230,37 +211,29 @@ session_start();
                     <a href="aboutus.php">ABOUT US</a>
                 </li>
                 <li>
-                    <a href="mechprofile.php" class="active">PROFILE</a>
+                    <a href="userprofile.php">PROFILE</a>
                 </li>
             </ul>
         </nav>
     </header>
     <div class="orange"></div>
     <?php
-    
-
-    $mechanicID =  $_SESSION['mechanicid'];
-    if (!$mechanicID) {
-        $mechanicID = $_GET['mechID'];
-    }
-
+    require 'config.php';
+    $mechanicID = $_GET['mechID'];
     $_SESSION['mechID'] = $mechanicID;
-
     $sql = "SELECT * FROM `mechanics` WHERE mechid=$mechanicID";
-
     $dataset = $connect->query($sql) or die("Error query");
-
     if ($dataset->num_rows > 0) {
-        while ($row = $dataset->fetch_assoc()) {
-            $name = $row['mechName'];
-            $email = $row['mechEmail'];
-            $no = $row['mechno'];
-            $addr = $row['mechaddr'];
-            $id = $row['mechid'];
-            $pic = $row['mech_pfp'];
+        while ($row = $dataset->fetch_array()) {
+            $name = $row['1'];
+            $email = $row['2'];
+            $no = $row['4'];
+            $addr = $row['3'];
+            $id = $row['0'];
+            $pic = $row['7'];
             $_SESSION['mechname'] = $name;
-            $service = $row['mech_services'];
-            $mechcover = $row['mech_cover'];
+            $service = $row['6'];
+            $mechcover = $row['8'];
     ?>
             <div class="coverphoto" style="width: 90%;height: 200px; margin:auto; margin-top:2%;margin-bottom:1%;">
                 <img src="image/<?php echo $mechcover; ?>" alt="" srcset="" style="width:100%;height:200px;">
@@ -273,7 +246,7 @@ session_start();
                                 <img src="image/<?php echo $pic; ?>" alt="" srcset="" class="avatar">
                             </div>
                         </td>
-                        <td style="padding:2px;">
+                        <td style="padding:15px;">
                             <h5><a href="mechprofile.php" style="text-decoration:none;color:#D9D9D9;"><?php echo $name; ?></a></h5>
                             <div class="text-muted small" style="font-weight:600;color:#D9D9D9;">
                                 <?php echo $email; ?>
@@ -298,7 +271,8 @@ session_start();
                                 <p>contact us: <span style="color:#F86D1A;"><?php echo $no; ?></span> <br>
                                     <span style="color:#F86D1A;"><?php echo $addr; ?></span><br>
                                     Average Rating: <span style="color:#F86D1A;"> <?php
-                                                                 
+                                                                                    require 'config.php';
+                                                                                    $mechanicID = $_GET['mechID'];
                                                                                     $query = "SELECT AVG(ratings) as avg_rating FROM ratings WHERE mechanic_id = $mechanicID";
                                                                                     $result = $connect->query($query) or die("Error query");
                                                                                     if ($result) {
@@ -341,7 +315,7 @@ session_start();
                         </div>
                     </div>
                     <div class="col-6">
-                        <div style="margin-top: 10%;">
+                        <div style="margin-top: 10%; color: white;">
                             <?php
 
                             foreach ((array) $service as $item) {
@@ -362,8 +336,6 @@ session_start();
         <?php
         }
     }
-
-    $connect->close();
 
         ?>
             </div>

@@ -31,32 +31,24 @@ session_start();
     body {
         background-color: #1F1F1F;
         overflow-x: hidden;
-        overflow-y: auto;
     }
 
     header {
-        width: 60%;
+        width: 100%;
         height: 60px;
-        background: #D9D9D9;
+        /* background: #D9D9D9; */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 40px;
+        padding: 0 10px;
         margin: 0 auto;
         margin-top: 2%;
     }
 
-    * {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        list-style: none;
-        text-decoration: none;
-    }
-
-    body {
-        background-color: #1F1F1F;
+    .jumbotrontitle {
+        width: 100%;
+        margin-top: 13%;
+        margin-left: 10%;
     }
 
     img {
@@ -64,8 +56,9 @@ session_start();
     }
 
     .logo {
-        width: 180px;
-        margin-top: 40px;
+        width: 100px;
+        height: 100px;
+        margin-left: 20px;
     }
 
     nav .logo {
@@ -77,15 +70,19 @@ session_start();
     }
 
     nav ul li a {
-        color: #2F2F2F;
+        color: white;
         display: block;
-        margin: 0 2px;
-        padding: 15px 20px;
+        margin: 0;
+        font-size: 13px;
+        padding-right: 50px;
+        padding-left: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
         transition: 0.2s;
         text-decoration: none;
 
     }
-
     nav ul li a:hover {
         background: #F86D1A;
         color: #D9D9D9;
@@ -93,20 +90,27 @@ session_start();
     }
 
     nav ul li a.active {
-        background: #F86D1A;
-        color: #D9D9D9;
+        font-size: 20px;
+        font-weight: bold;
+        color: #F86D1A;
     }
-
+/* 
     .orange {
         background: #F86D1A;
         width: 23%;
         height: 65px;
         margin-left: 15%;
         margin-top: -2%;
-    }
+    } */
 
     .mainbody {
         margin-top: 0px;
+    }
+
+    .car {
+        width: 60%;
+        float: right;
+        margin-top: -25%;
     }
 
     .jumbotrontitle {
@@ -119,49 +123,12 @@ session_start();
         font-size: 100px;
     }
 
-    .buttn {
-        margin-top: 3%;
-        width: 50%;
-    }
-
     table {
         width: 100%;
     }
 
-    .coverphoto {
-        width: 100%;
-        height: 100px;
-    }
-
     .backbutton {
         padding: 10px;
-    }
-
-    .avatar {
-        vertical-align: middle;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-    }
-
-    .input-field .text {
-        height: 45px;
-        width: 87%;
-        border: none;
-        border-radius: 30px;
-        color: #fff;
-        font-size: 15px;
-        padding: 0 0 0 45px;
-        background: rgba(255, 255, 255, 0.1);
-        outline: none;
-    }
-
-    .input{
-        width: 100%;
-    }
-
-    h2 {
-        color: white;
     }
 
     @media only screen and (max-width: 1100px) {
@@ -179,7 +146,7 @@ session_start();
             width: 60%;
             height: 100vh;
             transition: 0.2s;
-            background-color: #2F2F2F;
+            /* background-color: #2F2F2F; */
             box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.05);
         }
 
@@ -217,19 +184,19 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='Current'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='Current'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            <img src="image/<?php echo $image; ?>">
+                            <img src="image/NEARMELOGO.png">
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
@@ -309,7 +276,7 @@ session_start();
                         <img src="image/<?php echo $_SESSION['mechpfp']; ?>" alt="" srcset="" class="avatar">
                     </div>
                 </td>
-                <td style="padding:2px;">
+                <td style="padding:20px;">
                     <h5><a href="mechprofile.php" style="text-decoration:none;color:#D9D9D9;"><?php echo $_SESSION['mechname']; ?></a></h5>
                     <div class="text-small" style="font-weight:600;color:#F86D1A">
                         <?php echo $_SESSION['mechemail']; ?>
@@ -317,7 +284,7 @@ session_start();
                 </td>
             </tr>
             <tr>
-                <td style="padding:15px;">
+                <td style="padding: 20px;">
                     <div class="" style="font-weight:600;color:#D9D9D9;">
                         <p>Contact Number: <span style="color:#F86D1A;"><?php echo $_SESSION['mechnum']; ?></span> <br>
                             <span style="color:#F86D1A;"><?php echo $_SESSION['mechaddr']; ?></span>
@@ -339,7 +306,7 @@ session_start();
             </div>
 
             <div class="col-6">
-                <div style="margin-top: 10%;">
+                <div style="margin-top: 10%; color: white;">
                     <?php
                     $service = $_SESSION['mech_services'];
                     foreach ((array) $service as $item) {

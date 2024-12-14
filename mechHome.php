@@ -32,60 +32,34 @@ session_start();
     body {
         background-color: #1F1F1F;
         overflow-x: hidden;
-        color: white;
     }
 
     header {
-        width: 60%;
+        width: 100%;
         height: 60px;
-        background: #D9D9D9;
+        /* background: #D9D9D9; */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 40px;
+        padding: 0 10px;
         margin: 0 auto;
         margin-top: 2%;
     }
 
-    .card {
-        background-color: #2F2F2F;
+    .jumbotrontitle {
+        width: 100%;
+        margin-top: 13%;
+        margin-left: 10%;
     }
 
-    input[type=submit] {
-        border: none;
-        justify-content: end;
-        border-radius: 10px;
-        font-size: 12px;
-        height: 30px;
-        outline: none;
-        width: 15%;
-        color: white;
-        background: #F86D1A;
-        cursor: pointer;
-        transition: .3s;
-        float: inline-end;
-    }
-
-    .btn-text-right {
-        text-align: right;
-    }
-
-    a {
-        text-decoration: none;
-        color: white;
-    }
-
-    .label {
-        font-size: 12px;
-    }
-
-    .imglogo {
+    img {
         width: 100%;
     }
 
     .logo {
-        width: 180px;
-        margin-top: 40px;
+        width: 100px;
+        height: 100px;
+        margin-left: 20px;
     }
 
     nav .logo {
@@ -97,15 +71,19 @@ session_start();
     }
 
     nav ul li a {
-        color: #2F2F2F;
+        color: white;
         display: block;
-        margin: 0 2px;
-        padding: 15px 20px;
+        margin: 0;
+        font-size: 13px;
+        padding-right: 50px;
+        padding-left: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
         transition: 0.2s;
         text-decoration: none;
 
     }
-
     nav ul li a:hover {
         background: #F86D1A;
         color: #D9D9D9;
@@ -113,20 +91,45 @@ session_start();
     }
 
     nav ul li a.active {
-        background: #F86D1A;
-        color: #D9D9D9;
+        font-size: 20px;
+        font-weight: bold;
+        color: #F86D1A;
     }
-
+/* 
     .orange {
         background: #F86D1A;
         width: 23%;
         height: 65px;
         margin-left: 15%;
         margin-top: -2%;
-    }
+    } */
 
     .mainbody {
         margin-top: 0px;
+    }
+
+    .car {
+        width: 60%;
+        float: right;
+        margin-top: -25%;
+    }
+
+    .jumbotrontitle {
+        width: 100%;
+        margin-top: 15%;
+        margin-left: 10%;
+    }
+
+    h1 {
+        font-size: 100px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .backbutton {
+        padding: 10px;
     }
 
     @media only screen and (max-width: 1100px) {
@@ -144,7 +147,7 @@ session_start();
             width: 60%;
             height: 100vh;
             transition: 0.2s;
-            background-color: #2F2F2F;
+            /* background-color: #2F2F2F; */
             box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.05);
         }
 
@@ -182,19 +185,19 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='Current'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='Current'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            <img class="imglogo" src="image/<?php echo $image; ?>">
+                            <img class="imglogo" src="image/NEARMELOGO.png">
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
@@ -206,7 +209,8 @@ session_start();
             <ul>
             <li>
                     <a href="mechHome.php" class="active">HOME</a>
-                </li>
+                    </li>
+                <!-- </li>
                 <li>
                     <a href="mech.php">MECHANIC</a>
                 </li>
@@ -214,15 +218,24 @@ session_start();
                     <a href="forum.php">ON ROAD HELP</a>
                 </li>
                 <li>
-                    <a href="mechprofile.php">PROFILE</a>
+                    <a href="userprofile.php">PROFILE</a>
                 </li>
                 </li>
                 <li>
                     <a href="aboutus.php">ABOUT US</a>
-                </li>
+                </li> -->
                 <li>
+                        <a href="mechMessage.php">MESSAGES</a>
+                    </li>
+                    <li>
+                        <a href="profile.php">PROFILE</a>
+                    </li>
+                    <li>
+                        <a href="mechAboutUs.php">ABOUT US</a>
+                    </li>
+                <!-- <li>
     <a href="notifications.php"><i class="fas fa-bell"></i></a>
-    </li>
+    </li> -->
 </ul>
             </li>
             </ul>

@@ -16,16 +16,19 @@ session_start();
     <title>callmechanic</title>
 </head>
 <style>
-    * {
-        font-family: 'poppins', sans-serif;
-    }
-
-    body {
-        background-color: #1F1F1F;
+body {
+        background-color: #1F1F1F; /* Default background color */
+    background-image: url('img/loginbg.png'); /* Background image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-size: cover; /* Ensure the image covers the entire screen */
+    background-position: center; /* Center the image */
+    overflow: hidden; /* Prevent scrollbars if not needed */
     }
 
     .box {
-        display: flex;
+        margin-top: 150px;
+        margin-left: 200px;
+        /* display: flex; */
         justify-content: center;
         align-items: center;
         min-height: 90vh;
@@ -119,23 +122,22 @@ session_start();
         color: #F86D1A;
     }
 </style>
-
 <body>
     <div class="d-flex flex-wrap justify-content-center align-item-center;" style="height:100vh;
      <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='login'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='login'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            background-image: url('img/<?php echo $image ?>');background-repeat:no-repeat;background-position:center;">
+                            /* background-image: url('img/<?php echo $image ?>');background-repeat:no-repeat;background-position:center;"> */
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
         <div class="box">
             <div class="container">
@@ -143,19 +145,19 @@ session_start();
                     <form action="" method="POST">
                         <center>
                             <?php
-                            require 'config.php';
-                            $sql = "SELECT * FROM `components_images` where status='Current'";
-                            $dataset = $connect->query($sql);
-                            if ($dataset) {
-                                if ($dataset->num_rows > 0) {
-                                    while ($row = $dataset->fetch_array()) {
-                                        $image = $row['2'];
+                            // require 'config.php';
+                            // $sql = "SELECT * FROM `components_images` where status='Current'";
+                            // $dataset = $connect->query($sql);
+                            // if ($dataset) {
+                            //     if ($dataset->num_rows > 0) {
+                            //         while ($row = $dataset->fetch_array()) {
+                            //             $image = $row['2'];
                             ?>
-                                        <img src="img/<?php echo $image; ?>" width="180" height="90" alt="" name="logo">
+                                        <img src="image/NEARMELOGO.png" width="180" height="180" alt="" name="logo">
                             <?php
-                                    }
-                                }
-                            }
+                            //         }
+                            //     }
+                            // }
                             ?>
                         </center>
                         <header>Welcome!</header>

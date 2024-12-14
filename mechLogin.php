@@ -1,9 +1,4 @@
 <?php
-if (isset($_GET['logout'])) {
-
-    session_unset();
-    session_destroy();
-}
     session_start();
     ?>
 <!DOCTYPE html>
@@ -25,20 +20,30 @@ if (isset($_GET['logout'])) {
         font-family: 'poppins', sans-serif;
     }
     body {
-        background-color: #1F1F1F;
+        background-color: #1F1F1F; /* Default background color */
+    background-image: url('img/loginbg.png'); /* Background image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-size: cover; /* Ensure the image covers the entire screen */
+    background-position: center; /* Center the image */
+    overflow: hidden; /* Prevent scrollbars if not needed */
     }
+
     .box {
-        display: flex;
+        margin-top: 150px;
+        margin-left: 200px;
+        /* display: flex; */
         justify-content: center;
         align-items: center;
         min-height: 90vh;
     }
+
     .container {
         width: 350px;
         display: flex;
         flex-direction: column;
         padding: 0 15px 0 15px;
     }
+
     span {
         color: #fff;
         font-size: small;
@@ -46,6 +51,7 @@ if (isset($_GET['logout'])) {
         justify-content: center;
         padding: 0px 0 20px 0;
     }
+
     header {
         color: #fff;
         font-size: 30px;
@@ -53,9 +59,7 @@ if (isset($_GET['logout'])) {
         justify-content: center;
         padding: 10px 0 0 0;
     }
-    .input-field .select{
-        width: 80%;
-    }
+
     .input-field .input {
         height: 45px;
         width: 87%;
@@ -67,12 +71,14 @@ if (isset($_GET['logout'])) {
         background: rgba(255, 255, 255, 0.1);
         outline: none;
     }
+
     i {
         position: relative;
         top: -33px;
         left: 17px;
         color: #fff;
     }
+
     p {
         color: #fff;
         font-size: small;
@@ -80,9 +86,11 @@ if (isset($_GET['logout'])) {
         justify-content: center;
         padding: 10px 0 10px 0;
     }
+
     ::-webkit-input-placeholder {
         color: #fff;
     }
+
     .submit {
         border: none;
         border-radius: 30px;
@@ -96,18 +104,22 @@ if (isset($_GET['logout'])) {
         transition: .3s;
         margin-top: 10px;
     }
+
     .submit:hover {
         background: rgba(255, 255, 255, 0.7);
     }
+
     .remember {
         display: flex;
         color: #fff;
         font-size: small;
     }
+
     label a {
         text-decoration: none;
         color: #fff;
     }
+
     a {
         text-decoration: none;
         color: #F86D1A;
@@ -115,66 +127,68 @@ if (isset($_GET['logout'])) {
 </style>
 
 <body>
-<div class="d-flex flex-wrap justify-content-center align-item-center;" style="height:100vh;     <?php
-                require 'config.php';
-                $sql = "SELECT * FROM `components_images` where status='login'";
-                $dataset = $connect->query($sql);
-                if ($dataset) {
-                    if ($dataset->num_rows > 0) {
-                        while ($row = $dataset->fetch_array()) {
-                            $image = $row['2'];
+<div class="d-flex flex-wrap justify-content-center align-item-center;" style="height:100vh;">
+     <?php
+                // require 'config.php';
+                // $sql = "SELECT * FROM `components_images` where status='login'";
+                // $dataset = $connect->query($sql);
+                // if ($dataset) {
+                //     if ($dataset->num_rows > 0) {
+                //         while ($row = $dataset->fetch_array()) {
+                //             $image = $row['2'];
                 ?>
-                            background-image: url('img/<?php echo $image ?>');background-repeat:no-repeat;background-position:center;">
+                            /* background-image: url('img/loginbg.png');background-repeat:no-repeat;background-position:center;"> */
                 <?php
-                        }
-                    }
-                }
+                //         }
+                //     }
+                // }
                 ?>
-    <div class="box">
-        <div class="container">
-            <div class="top">
-                <form action="" method="POST">
-                <center>
+        <div class="box">
+            <div class="container">
+                <div class="top">
+                    <form action="" method="POST">
+                        <center>
                             <?php
-                            require 'config.php';
-                            $sql = "SELECT * FROM `components_images` where status='Current'";
-                            $dataset = $connect->query($sql);
-                            if ($dataset) {
-                                if ($dataset->num_rows > 0) {
-                                    while ($row = $dataset->fetch_array()) {
-                                        $image = $row['2'];
+                            // require 'config.php';
+                            // $sql = "SELECT * FROM `components_images` where status='Current'";
+                            // $dataset = $connect->query($sql);
+                            // if ($dataset) {
+                            //     if ($dataset->num_rows > 0) {
+                            //         while ($row = $dataset->fetch_array()) {
+                            //             $image = $row['2'];
                             ?>
-                                        <img src="img/<?php echo $image; ?>" width="180" height="90" alt="" name="logo">
+                                        <img src="image/NEARMELOGO.png" width="180" height="180" alt="" name="logo">
                             <?php
-                                    }
-                                }
-                            }
+                            //         }
+                            //     }
+                            // }
                             ?>
                         </center>
-                    <header>Welcome!</header>
-                    <span>Sign in to your account.</span>
-            </div>
-            <div class="input-field">
-                <input type="text" class="input" placeholder="Email" name="email" required>
-                <i class="fa-solid fa-envelope"></i>
-            </div>
-            <div class="input-field">
-                <input type="Password" class="input" placeholder="Password" name="pwd" required>
-                <i class="fa-solid fa-key"></i>
-            </div>
-            <div class="input-field">
-    <input type="submit" class="submit" value="Login" name="Login">
+                        <span>Sign in to your account.</span>
+                </div>
+                <div class="input-field">
+                    <input type="text" class="input" placeholder="Email" name="email" required>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="input-field">
+                    <input type="Password" class="input" placeholder="Password" name="pwd" required>
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <div class="input-field">
+                    <input type="submit" class="submit" value="Login" name="Login">
+                </div>
+                <div>
+    <p><a href="forgot_password.php">Forgot Password?</a></p>
 </div>
-<div>
-    <p>Not a member yet? &nbsp; <b><a href="mechregister.php">Sign up.</a></b></p>
-    <p><a href="forgot_password.php">Forgot Password?</a></p> <!-- New line -->
-</div>
-
-            
-            </form>
+                <div>
+                    <p>Not a member yet? &nbsp; <b><a href="mechregister.php">Sign up.</a></b></p>
+                    <!-- <p><a href="mechLogin.php">Login as mechanic</a></p> -->
+                </div>
+                </form>
+            </div>
         </div>
     </div>
-    </div>
+
     
     </div>
     <?php
@@ -202,7 +216,6 @@ if (isset($_GET['logout'])) {
                 $_SESSION['mechanicid']=$id;
                 $_SESSION['mechname']=$mname;
                 $_SESSION['mechemail']=$memail;
-                $_SESSION['user_type'] = 'mechanic';
                 $_SESSION['mechaddr']=$maddr;
                 $_SESSION['mechnum']=$mechno1;
                 $_SESSION['mechpfp']=$mechpfp;
