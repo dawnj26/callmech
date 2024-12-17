@@ -271,6 +271,7 @@
         <div class="mainbody" style="width: 50%;">
         <?php
                 require 'config.php';
+                require 'utils/utils.php';
                 
                 $mechname = $_SESSION['mechname'];//session the name of mechanic
                 $username = $_GET['username'];
@@ -285,8 +286,13 @@
         <?php
 
         if (isset($_POST['send'])) {
+            
             $mechname = $_SESSION['mechname']; // session the name of mechanic
             $username = $_GET['username'];
+            $userId = getUserIdByName($username);
+            // echo $userId;
+
+            createNotification($userId, "$mechname sent a message", "chat");
             $message = $_POST['message_content'];
             $dataset = $connect->query("INSERT INTO `messages`(`msg_sender`, `msg_receiver`, `msg_content`) VALUES ('$mechname','$username','$message')") or die("Error query");
         
@@ -335,8 +341,8 @@
             <div class="container" style=" margin-top:5%;">
                 <center>
                     <hr>
-                    <p style="color:#D9D9D9;">Copyright &copy; 2017 All Rights Reserved by
-                    <span style="color:#F86D1A;">callmechanic</span>.</p>
+                    <p style="color:#D9D9D9;">Copyright &copy; 2024 All Rights Reserved by
+                    <span style="color:#F86D1A;">NearMe</span>.</p>
                 </center>
             </div>
         </footer>

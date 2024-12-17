@@ -416,8 +416,10 @@ header {
             </div>
         </div>
     <?php } ?>
-
-
+    <hr>
+    <p style="color:#D9D9D9;">Copyright &copy; 2024 All Rights Reserved by
+        <span style="color:#F86D1A;">NearMe</span>.
+    </p>
 
 </body>
 

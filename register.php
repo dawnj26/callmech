@@ -143,6 +143,7 @@
                 //         }
                 //     }
                 // }
+            
                 ?>
 <div class="box">
         <div class="container">
@@ -241,21 +242,27 @@
           $newImageName=uniqid();
           $newImageName .='.' .$ImageExtension;
   
-          $target = "C:\\xampp\\htdocs\\cc106etr\\image\\" . basename($fileName);
-          move_uploaded_file($tmpName, $target);
-  
-          $dataset = $connect->query("INSERT INTO `user`(`first_name`, `last_name`, `birthdate`, `gender`, `contactno`, `email`, `password`, `profile_pic`) VALUES ('$fname','$lname','$bdate','$sex','$num','$email','$pwd','$fileName')") or die("Error query");
-          if ($dataset) {
-              echo "<script>swal({
-                          title: 'Good Job!',
-                          icon:'success',
-                          text: 'You have successfully created an account.',
-                          type: 'success'
-                        }).then(function() {
-                            window.location.href = 'login.php';
-                        })</script>";
+          $target = 'image/'. basename($fileName);
+
+          if (!move_uploaded_file($tmpName, $target)) {
+            echo $target;
+            echo 'Error uploading';
+          } else {
+            $dataset = $connect->query("INSERT INTO `user`(`first_name`, `last_name`, `birthdate`, `gender`, `contactno`, `email`, `password`, `profile_pic`) VALUES ('$fname','$lname','$bdate','$sex','$num','$email','$pwd','$fileName')") or die("Error query");
+            if ($dataset) {
+                echo "<script>swal({
+                            title: 'Good Job!',
+                            icon:'success',
+                            text: 'You have successfully created an account.',
+                            type: 'success'
+                            }).then(function() {
+                                window.location.href = 'login.php';
+                            })</script>";
+            }
+            $connect->close();
           }
-          $connect->close();
+  
+          
       }
       ?>
     <br>

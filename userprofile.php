@@ -262,6 +262,7 @@ session_start();
         require 'config.php';
         $userid = $_SESSION['user_id'];
         $sql = "SELECT * FROM `user` WHERE user_id=$userid";
+
         $dataset = $connect->query($sql) or die("Error query");
         if ($dataset->num_rows > 0) {
             while ($row = $dataset->fetch_array()) {

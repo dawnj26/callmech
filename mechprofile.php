@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -71,11 +72,12 @@ session_start();
         padding-left: 50px;
         padding-top: 20px;
         padding-bottom: 20px;
-        
+
         transition: 0.2s;
         text-decoration: none;
 
     }
+
     nav ul li a:hover {
         background: #F86D1A;
         color: #D9D9D9;
@@ -87,7 +89,8 @@ session_start();
         font-weight: bold;
         color: #F86D1A;
     }
-/* 
+
+    /* 
     .orange {
         background: #F86D1A;
         width: 23%;
@@ -176,21 +179,21 @@ session_start();
 <body>
     <header>
         <div class="logo">
-        <?php
-               
-                // $sql = "SELECT * FROM `components_images` where status='Current'";
-                // $dataset = $connect->query($sql);
-                // if ($dataset) {
-                //     if ($dataset->num_rows > 0) {
-                //         while ($row = $dataset->fetch_array()) {
-                //             $image = $row['2'];
-                ?>
-                            <img src="image/NEARMELOGO.png">
-                <?php
-                //         }
-                //     }
-                // }
-                ?>
+            <?php
+
+            // $sql = "SELECT * FROM `components_images` where status='Current'";
+            // $dataset = $connect->query($sql);
+            // if ($dataset) {
+            //     if ($dataset->num_rows > 0) {
+            //         while ($row = $dataset->fetch_array()) {
+            //             $image = $row['2'];
+            ?>
+            <img src="image/NEARMELOGO.png">
+            <?php
+            //         }
+            //     }
+            // }
+            ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
         <nav>
@@ -202,7 +205,7 @@ session_start();
                     <a href="mechHome.php">HOME</a>
                 </li>
                 <li>
-                    <a href="mechMech.php" >MECHANIC</a>
+                    <a href="mechMech.php">MECHANIC</a>
                 </li>
                 <li>
                     <a href="forum.php">ON ROAD HELP</a>
@@ -211,25 +214,25 @@ session_start();
                     <a href="aboutus.php">ABOUT US</a>
                 </li>
                 <li>
-                    <a href="mechprofile.php"class="active">PROFILE</a>
+                    <a href="mechprofile.php" class="active">PROFILE</a>
                 </li>
                 <li>
-    <a href="notifications.php"><i class="fas fa-bell"></i></a>
-    </li>
+                    <a href="notifications.php"><i class="fas fa-bell"></i></a>
+                </li>
             </ul>
         </nav>
     </header>
     <div class="orange"></div>
     <?php
-      require 'config.php';
+    require 'config.php';
 
     $mechanicID =  $_SESSION['mechanicid'];
     if (!$mechanicID) {
         $mechanicID = $_GET['mechID'];
     }
-    
+
     $_SESSION['mechID'] = $mechanicID;
-    
+
 
     $sql = "SELECT * FROM `mechanics` WHERE mechid=$mechanicID";
 
@@ -282,32 +285,35 @@ session_start();
                             <div class="" style="font-weight:600;color:#D9D9D9;">
                                 <p>contact us: <span style="color:#F86D1A;"><?php echo $no; ?></span> <br>
                                     <span style="color:#F86D1A;"><?php echo $addr; ?></span><br>
-                                    Average Rating: <span style="color:#F86D1A;"> <?php
-                                                                                    
-                                                                                    $query = "SELECT AVG(ratings) as avg_rating FROM ratings WHERE mechanic_id = $mechanicID";
-                                                                                    $result = $connect->query($query) or die("Error query");
-                                                                                    if ($result) {
-                                                                                        if ($result->num_rows > 0) {
-                                                                                            while ($row = $result->fetch_array()) { {
-                                                                                                    $avg_rating = $row['0'];
-                                                                                                    $_SESSION['$avg_rating'] = $avg_rating;
-                                                                                                    $full_stars = floor($avg_rating);
-                                                                                                    $half_star = $avg_rating - $full_stars >= 0.5;
-                                                                                                    $empty_stars = 5 - $full_stars - $half_star;
-                                                                                                    for ($i = 0; $i < $full_stars; $i++) {
-                                                                                                        echo '<i class="fa fa-star"></i>';
-                                                                                                    }
-                                                                                                    if ($half_star) {
-                                                                                                        echo '<i class="fa fa-star-half-o"></i>';
-                                                                                                    }
-                                                                                                    for ($i = 0; $i < $empty_stars; $i++) {
-                                                                                                        echo '<i class="fa fa-star-o"></i>';
-                                                                                                    }
-                                                                                                }
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                    ?>
+                                    Average Rating: <span style="color:#F86D1A;">
+                                        <?php
+
+                                        $query = "SELECT AVG(ratings) as avg_rating FROM ratings WHERE mechanic_id = $mechanicID";
+                                        $result = $connect->query($query) or die("Error query");
+
+                                        if ($result) {
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) { {
+                                                        $avg_rating = (float)$row['avg_rating'];
+
+                                                        $_SESSION['$avg_rating'] = $avg_rating;
+                                                        $full_stars = floor($avg_rating);
+                                                        $half_star = $avg_rating - $full_stars >= 0.5;
+                                                        $empty_stars = 5 - $full_stars - $half_star;
+                                                        for ($i = 0; $i < $full_stars; $i++) {
+                                                            echo '<i class="fa fa-star"></i>';
+                                                        }
+                                                        if ($half_star) {
+                                                            echo '<i class="fa fa-star-half-o"></i>';
+                                                        }
+                                                        for ($i = 0; $i < $empty_stars; $i++) {
+                                                            echo '<i class="fa fa-star-o"></i>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </span>
                                 </p>
                             </div>
@@ -347,7 +353,7 @@ session_start();
         <?php
         }
     }
-    
+
     $connect->close();
 
         ?>

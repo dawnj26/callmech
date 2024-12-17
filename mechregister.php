@@ -233,14 +233,15 @@
         $ImageExtension = strtolower(end($ImageExtension)); 
         $newImageName=uniqid();
         $newImageName .='.' .$ImageExtension;
+        $targetPath = "image/";
 
-        $target = "C:\\xampp\\htdocs\\cc106etr\\image\\" . basename($fileName);
+        $target = $targetPath . basename($fileName);
         move_uploaded_file($tmpName, $target);
 
-        $target1 = "C:\\xampp\\htdocs\\cc106etr\\image\\" . basename($fileName1);
+        $target1 = $targetPath . basename($fileName1);
         move_uploaded_file($tmpName1, $target1);
 
-        $target2 = "C:\\xampp\\htdocs\\cc106etr\\image\\" . basename($fileName2);
+        $target2 = $targetPath . basename($fileName2);
         move_uploaded_file($tmpName2, $target2);
 
         $services = $_POST['service'];
