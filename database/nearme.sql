@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 14, 2024 at 01:16 PM
+-- Generation Time: Dec 17, 2024 at 10:59 AM
 -- Server version: 11.6.2-MariaDB
 -- PHP Version: 8.3.14
 
@@ -33,14 +33,18 @@ CREATE TABLE `comment` (
   `mechanic_id` int(11) NOT NULL,
   `content` varchar(100) NOT NULL,
   `date_posted` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`comment_id`, `post_id`, `mechanic_id`, `content`, `date_posted`) VALUES
-(6, 20, 2, 'LOCATION?', '1674728925');
+(7, 23, 14, 'hello\r\n', '1734354100'),
+(8, 25, 15, 'hello po, please pm me', '1734357135'),
+(9, 25, 15, 'just pm me', '1734357183'),
+(10, 26, 1, 'locaTION PO?\r\n', '1734396798'),
+(11, 27, 1, 'pm', '1734400672');
 
 -- --------------------------------------------------------
 
@@ -53,7 +57,7 @@ CREATE TABLE `components_images` (
   `components_name` varchar(100) NOT NULL,
   `components_image` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `components_images`
@@ -85,20 +89,23 @@ CREATE TABLE `mechanics` (
   `mech_cover` varchar(100) NOT NULL,
   `business_permit` varchar(100) NOT NULL,
   `acc_status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `mechanics`
 --
 
 INSERT INTO `mechanics` (`mechid`, `mechName`, `mechEmail`, `mechaddr`, `mechno`, `mechpwd`, `mech_services`, `mech_pfp`, `mech_cover`, `business_permit`, `acc_status`) VALUES
-(1, 'supra auto repair', 'supra@gmail.com', 'san jose, san nicolas, pangasinan', '0973512486', '123', 'General Repair,Ac Repair,Engine Work', 'logo6.jpg', 'logo6.jpg', 'business_permit.jpg', 'Approved'),
+(1, 'supra auto repair11', 'supra@gmail.com', 'san jose, san nicolas, pangasinan', '0973512486', '123', 'General Repair,Ac Repair,Engine Work', 'logo6.jpg', 'logo6.jpg', 'business_permit.jpg', 'Approved'),
 (2, 'chichis auto repair shop', 'chichiautorep@gmail.com', 'Sison Street, Urdaneta City, 2428 Pangasinan, Philippines', '09885736952', '123', 'General Repair, Oil Change', 'logo1.jpg', '', 'business_permit.jpg', 'Approved'),
 (4, 'jordans auto repair shop', 'jordan@gmail.com', 'Laoac, Alcala, Pangasinan', '09356914769', '123', '', 'logo3.jpg', '', 'business_permit.jpg', 'Pending'),
 (6, 'Yellow Bird Auto Center', 'ybbautocenter@gmail.com', 'Asingan, Pangasinan', '09885396472', '123', '', 'logo4.jpg', '', 'business_permit.jpg', 'Approved'),
 (10, 'sza auto-repair shop', 'sza@gmail.com', 'Tayug, Pangasinan', '0123456789', '123', 'Maintenance, Oil Change, Battery Refill', 'p1.jpg', 'parking.jpg', 'business_permit.jpg', 'Approved'),
 (11, 'hagsh', 'dsahg@gmail.com', 'sdfgsj', '2647', '123', 'Maintenance, Oil Change', 'p3.jpg', 'reg.jpg', 'business_permit.jpg', 'Approved'),
-(12, 'patpat', 'jijicries@gmail.com', 'san jose snp', '0982736203', '123', 'change oil, tune up, maintenance', 'patriciajose.JPG', 'patriciajose.JPG', 'patriciajose.JPG', 'Approved');
+(13, 'pagawaan', 'pagawaan@gmail.com', 'urdaneta', '099999999', '123', 'all around', '', '', '', 'Pending'),
+(14, 'gawa11', 'g111@gmail.com', 'sison111', '12222221111', '', 'all111', 'profile_676147afd85a6.png', 'cover_676147afd949c.png', '5.jpg', 'pending'),
+(15, 'auto supply ni yanna', 'yanyan@gmail.com', 'siso pangasinan', '0902552565', '123', 'all around', 'download (2).jpg', 'c.jpg', 'lovepik-blue-line-png-image_400742536_wh1200.png', 'Approved'),
+(16, 'benZ', '123@fgmai.com', '123123123', '123123', '123', '123123123123', '', '', '', 'pending');
 
 -- --------------------------------------------------------
 
@@ -119,11 +126,33 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`msg_id`, `msg_sender`, `msg_receiver`, `msg_content`, `created_at`) VALUES
-(1, 'Patricia Jose', 'supra auto repair', 'ty', '2024-12-14 07:11:03'),
-(2, 'Patricia Jose', 'supra auto repair', 'yow', '2024-12-14 10:00:37'),
-(3, 'Patricia Jose', 'supra auto repair', 'blue sky', '2024-12-14 10:01:52'),
-(4, 'Patricia Jose', 'supra auto repair', 'can you help me', '2024-12-14 10:27:55'),
-(5, 'Patricia Jose', 'supra auto repair', 'pls help my car died', '2024-12-14 13:09:06');
+(1, 'Patricia Jose', 'supra auto repair11', 'ty', '2024-12-14 07:11:03'),
+(2, 'Patricia Jose', 'supra auto repair11', 'yow', '2024-12-14 10:00:37'),
+(3, 'Patricia Jose', 'supra auto repair11', 'blue sky', '2024-12-14 10:01:52'),
+(4, 'Patricia Jose', 'supra auto repair11', 'can you help me', '2024-12-14 10:27:55'),
+(5, 'Patricia Jose', 'supra auto repair11', 'pls help my car died', '2024-12-14 13:09:06'),
+(6, 'supra auto repair11', 'Patricia Jose', 'ok', '2024-12-14 13:45:13'),
+(7, 'supra auto repair11', 'Patricia Jose', 'going now', '2024-12-14 13:46:46'),
+(8, 'gawa', 'PIA MARIE CUADE', 'hi', '2024-12-16 13:05:00'),
+(9, 'gawa', 'PIA MARIE CUADE', 'hi', '2024-12-16 13:06:17'),
+(10, 'gawa', 'PIA MARIE CUADE', 'huy', '2024-12-16 13:06:28'),
+(11, 'donn3 quinto', 'supra auto repair11', 'asd', '2024-12-16 13:12:19'),
+(12, 'donn3 quinto', 'supra auto repair11', 'asd', '2024-12-16 13:12:22'),
+(13, 'donn3 quinto', 'supra auto repair11', '123', '2024-12-16 13:12:25'),
+(14, 'Avery Eya', 'supra auto repair11', 'yow', '2024-12-16 13:13:33'),
+(15, 'Avery Eya', 'supra auto repair11', '', '2024-12-16 13:13:36'),
+(16, 'supra auto repair11', 'donn3 quinto', 'asd', '2024-12-16 13:34:57'),
+(17, 'donn5 qwe', 'supra auto repair11', 'qwe', '2024-12-16 13:48:39'),
+(18, 'supra auto repair11', 'donn5 qwe', '123', '2024-12-16 13:53:56'),
+(19, 'supra auto repair11', 'donn5 qwe', '123', '2024-12-16 13:54:12'),
+(20, 'supra auto repair11', 'donn5 qwe', '123', '2024-12-16 13:54:31'),
+(21, 'supra auto repair11', 'donn5 qwe', '123', '2024-12-16 13:54:57'),
+(22, 'supra auto repair11', 'donn5 qwe', '123', '2024-12-16 13:56:06'),
+(23, 'supra auto repair11', 'donn5 qwe', '123', '2024-12-16 13:56:30'),
+(24, 'supra auto repair11', 'donn5 qwe', '123', '2024-12-16 13:56:39'),
+(25, 'Yanna Mae', 'supra auto repair11', 'hello', '2024-12-17 00:58:40'),
+(26, 'Yanna Mae', 'supra auto repair', 'fu', '2024-12-17 01:03:07'),
+(27, 'supra auto repair', 'Yanna Mae', 'hi', '2024-12-17 01:03:14');
 
 -- --------------------------------------------------------
 
@@ -145,19 +174,17 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `user_id`, `mechanic_id`, `message`, `type`, `created_at`) VALUES
-(1, 12, NULL, 'Your car service request #123 has been accepted', 'chat', '2024-12-13 09:30:21'),
-(2, 12, NULL, 'Payment received for service #123', 'chat', '2024-12-13 10:30:21'),
-(3, 12, NULL, 'Mechanic is on the way to your location', 'chat', '2024-12-13 13:30:21'),
-(4, 12, NULL, 'Service completed - Please rate your experience', 'comment', '2024-12-13 15:30:21'),
-(5, 12, NULL, 'Special discount: 20% off on next service booking', 'rating', '2024-12-13 18:30:21'),
-(6, 12, NULL, 'Upcoming maintenance reminder for your vehicle', 'chat', '2024-12-13 21:30:21'),
-(7, 12, NULL, 'New feature available: Chat with mechanic', 'rate', '2024-12-14 01:30:21'),
-(8, 12, NULL, 'Your booking #124 has been scheduled for tomorrow', 'rate', '2024-12-14 04:30:21'),
-(9, 12, NULL, 'Document verification pending', 'chat', '2024-12-14 07:30:21'),
-(10, 12, NULL, 'Weekend special offer: Free car wash with service', 'comment', '2024-12-14 09:30:21'),
-(18, NULL, 1, 'Patricia Jose sent a message', 'chat', '2024-12-14 10:27:55'),
-(19, NULL, 1, 'Patricia Jose sent a message', 'chat', '2024-12-14 13:09:06'),
-(20, NULL, 1, 'Patricia Jose rated you 5 stars', 'rating', '2024-12-14 13:14:55');
+(21, NULL, 1, 'donn3 quinto sent a message', 'chat', '2024-12-16 13:12:19'),
+(22, NULL, 1, 'donn3 quinto sent a message', 'chat', '2024-12-16 13:12:22'),
+(23, NULL, 1, 'donn3 quinto sent a message', 'chat', '2024-12-16 13:12:25'),
+(24, NULL, 1, 'Avery Eya sent a message', 'chat', '2024-12-16 13:13:33'),
+(25, NULL, 1, 'Avery Eya sent a message', 'chat', '2024-12-16 13:13:36'),
+(26, NULL, 1, 'donn5 qwe sent a message', 'chat', '2024-12-16 13:48:39'),
+(28, 36, NULL, 'supra auto repair sent a message', 'chat', '2024-12-16 13:56:39'),
+(29, NULL, 1, 'Yanna Mae sent a message', 'chat', '2024-12-17 00:58:40'),
+(30, NULL, 1, 'Yanna Mae rated you 4 stars', 'rating', '2024-12-17 00:58:47'),
+(35, NULL, 1, 'Yanna Mae sent a message', 'chat', '2024-12-17 01:03:07'),
+(36, 39, NULL, 'supra auto repair sent a message', 'chat', '2024-12-17 01:03:14');
 
 -- --------------------------------------------------------
 
@@ -170,18 +197,19 @@ CREATE TABLE `post` (
   `user_id` int(11) NOT NULL,
   `content` varchar(100) NOT NULL,
   `date_created` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `post`
 --
 
 INSERT INTO `post` (`post_id`, `user_id`, `content`, `date_created`) VALUES
-(9, 12, '[ASAP] Looking for a mechanic near PSU Urdaneta Campus', '1672395031'),
-(18, 12, '[ASAP] need a mechanic bagsakan area urdaneta', '1674101378'),
-(19, 12, '[ASAP] nasiraan ulet', '1674102801'),
-(20, 12, 'hello', '1674277980'),
-(21, 12, 'sdhfghdf', '1674729133');
+(22, 30, 'hello po need help\r\n', '1734353518'),
+(23, 30, 'im here at urdaneta area\r\n', '1734353546'),
+(24, 34, 'hellooooo', '1734354877'),
+(25, 38, 'hello po need help\r\nnear SM rosales', '1734356377'),
+(26, 39, 'looking for mechanic', '1734396731'),
+(27, 39, 'lf mechanic around urdaneta', '1734400530');
 
 -- --------------------------------------------------------
 
@@ -194,23 +222,36 @@ CREATE TABLE `ratings` (
   `mechanic_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `ratings` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `ratings`
 --
 
 INSERT INTO `ratings` (`rating_id`, `mechanic_id`, `user_id`, `ratings`) VALUES
-(1, 1, 12, 4),
-(2, 1, 12, 5),
-(3, 1, 12, 2),
-(4, 1, 12, 5),
-(5, 1, 12, 4),
-(6, 2, 12, 3),
-(7, 2, 12, 2),
-(8, 1, 12, 3),
-(9, 1, 12, 5),
-(10, 1, 12, 5);
+(11, 1, 39, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports`
+--
+
+CREATE TABLE `reports` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`id`, `user_id`, `content`, `created_at`) VALUES
+(1, 34, 'bad girl', '2024-12-17 10:08:03'),
+(2, 34, '123', '2024-12-17 10:13:36'),
+(3, 34, '123', '2024-12-17 10:26:40');
 
 -- --------------------------------------------------------
 
@@ -228,18 +269,21 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `profile_pic` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `birthdate`, `gender`, `contactno`, `email`, `password`, `profile_pic`) VALUES
-(12, 'Patricia', 'Jose', '2002-08-13', 'Female', '09456073978', 'patriciamjose.2002@gmail.com', 'patpat123', 'IMG_8867.JPG'),
-(25, 'jiji', 'cries', '2023-01-07', 'Female', '09774102637', 'akicarinan0216@gmail.com', '123456', ''),
-(26, 'angelica', 'carinan', '2023-01-14', 'Female', '0977531682', 'anjicarinan@gmail.com', 'anji', ''),
-(27, 'angelica', 'carinan', '2023-01-14', 'Female', '0977531682', 'anjicarinan11@gmail.com', 'lol', ''),
-(28, 'Don', 'Ramos', '2023-02-01', 'Male', '017263', 'juanursua101@gmail.com', '', 'IMG_9184.JPG');
+(30, 'PIA MARIE123', 'CUADE', '2002-02-27', 'Female', '0222222222544', 'pia@gmail.com', '123', 'profile_67613f1b280e0.png'),
+(31, 'donny', 'quinto', '2024-12-16', 'Male', '09560575513', 'donny@gmail.com', 'password', 'wallpaper.png'),
+(33, 'donn3', 'quinto', '2024-12-17', 'Male', '123123123123', 'donn3@gmail.com', 'password', 'wallpaper.png'),
+(34, 'Avery', 'Eya', '1999-01-19', 'Female', '09123456798', '21UR1425_ms@Psu.edu.ph', '123456', '1bdd7d87-33ac-48bd-bfaa-489f16c77fe7.jpg'),
+(36, 'donn5', 'qwe', '2024-12-19', 'Male', '123123', 'qwe@gmail.com', '123', 'wallpaper.png'),
+(37, 'yaya', 'ya', '2002-12-04', 'Female', '7747474744', 'y@gmail.com', '123', '1.1.jpg'),
+(38, 'MARIE', 'CUADE', '2002-02-27', 'Female', '09545826547', 'marie@gmail.com', '123', '462543267_3777864292544428_1592064793591860734_n (1).jpg'),
+(39, 'Yanna', 'Mae', '2001-12-04', 'Female', '0912345678', 'Yannamae@gmail.com', '12345', 'red_woman.png');
 
 -- --------------------------------------------------------
 
@@ -252,15 +296,7 @@ CREATE TABLE `vehicle` (
   `type` varchar(100) NOT NULL,
   `model` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
---
--- Dumping data for table `vehicle`
---
-
-INSERT INTO `vehicle` (`regno`, `type`, `model`, `user_id`) VALUES
-('', '', '', 25),
-('FDS745', 'Car', 'Honda', 12);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -316,6 +352,13 @@ ALTER TABLE `ratings`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `report_user_fk` (`user_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -336,7 +379,7 @@ ALTER TABLE `vehicle`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `components_images`
@@ -348,37 +391,43 @@ ALTER TABLE `components_images`
 -- AUTO_INCREMENT for table `mechanics`
 --
 ALTER TABLE `mechanics`
-  MODIFY `mechid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `mechid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Constraints for dumped tables
@@ -388,8 +437,8 @@ ALTER TABLE `user`
 -- Constraints for table `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
-  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`mechanic_id`) REFERENCES `mechanics` (`mechid`);
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`mechanic_id`) REFERENCES `mechanics` (`mechid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `notifications`
@@ -408,8 +457,14 @@ ALTER TABLE `post`
 -- Constraints for table `ratings`
 --
 ALTER TABLE `ratings`
-  ADD CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `ratings_ibfk_3` FOREIGN KEY (`mechanic_id`) REFERENCES `mechanics` (`mechid`);
+  ADD CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ratings_ibfk_3` FOREIGN KEY (`mechanic_id`) REFERENCES `mechanics` (`mechid`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `reports`
+--
+ALTER TABLE `reports`
+  ADD CONSTRAINT `report_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `vehicle`
