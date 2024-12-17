@@ -130,7 +130,7 @@
 
 <body>
 <div class="d-flex flex-wrap justify-content-center align-item-center;" style="<?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='register'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -223,7 +223,7 @@
     <?php
       
       if (isset($_POST['submit'])) {
-          require 'config.php';
+          require 'utils/config.php';
           $fname = $_POST['fname'];
           $lname = $_POST['lname'];
           $bdate = $_POST['bdate'];

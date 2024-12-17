@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require 'utils/config.php';
 $id = $_GET['id'];
 $sql = "DELETE FROM `mechanics` WHERE mechid=$id";
 $result=$connect->query($sql)or die ("Error executing SQL statement".$sql);

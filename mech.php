@@ -189,7 +189,7 @@ session_start();
 <header>
         <div class="logo">
         <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -249,7 +249,7 @@ session_start();
                         <div class="table-container">
                         <table style="width:100%;">
                             <?php
-                            require 'config.php';
+                            require 'utils/config.php';
                             $sql = "SELECT * FROM `mechanics`";
                             $dataset = $connect->query($sql);
                             if ($dataset) {

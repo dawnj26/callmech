@@ -180,7 +180,7 @@
     <header>
         <div class="logo">
         <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {

@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require 'utils/config.php';
 $name="background_img";
 $logo = $_FILES['image'];
 $status="Not Current";

@@ -1,5 +1,5 @@
 <?php
-require 'config.php'; // Include the database connection file
+require 'utils/config.php'; // Include the database connection file
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset_password'])) {
     $email = $_POST['email'];

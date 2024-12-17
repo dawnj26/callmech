@@ -188,7 +188,7 @@ session_start();
             <div class="col-md-8">
                 <table style="width:100%;">
                     <?php
-                    require 'config.php';
+                    require 'utils/config.php';
                     $location  = $_POST['search_location'];
                     $dataset = $connect->query("SELECT * FROM `mechanics` WHERE mechaddr LIKE'%$location%'") or die("Error query");
                     if ($dataset) {

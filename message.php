@@ -244,7 +244,7 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -284,8 +284,8 @@ session_start();
     <!-- <div class="orange"></div> -->
     <div class="mainbody">
         <?php
-        require 'config.php';
-        require 'utils/utils.php';
+        require 'utils/config.php';
+        require 'utils/notifications.php';
 
         $mechname = $_GET['mechname'];
         $username = $_SESSION['fname'] . " " . $_SESSION['lname'];

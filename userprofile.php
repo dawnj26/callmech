@@ -208,7 +208,7 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -259,7 +259,7 @@ session_start();
         <!-- User Details Section -->
 
         <?php
-        require 'config.php';
+        require 'utils/config.php';
         $userid = $_SESSION['user_id'];
         $sql = "SELECT * FROM `user` WHERE user_id=$userid";
 

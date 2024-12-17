@@ -75,7 +75,7 @@ session_start();
         <h1>Notifications</h1>
 
         <?php
-        require 'utils/utils.php';
+        require 'utils/notifications.php';
 
         $notifications = getNotifications();
 

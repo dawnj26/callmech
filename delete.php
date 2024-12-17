@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require 'utils/config.php';
 $id = $_GET['id'];
 $sql = "DELETE FROM `components_images` WHERE components_id=$id";
 $result=$connect->query($sql)or die ("Error executing SQL statement".$sql);

@@ -152,7 +152,7 @@
         <header>
             <div class="logo">
             <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -197,7 +197,7 @@
             <div class="aboutuslogo">
                 <div class="logs" style="width:75%;margin-left:auto;margin-right:auto;">
                 <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -217,7 +217,7 @@
             </div>
             <div class="smalllogo">
             <?php
-                require 'config.php';
+                require 'utils/config.php';
                 $sql = "SELECT * FROM `components_images` where status='Current'";
                 $dataset = $connect->query($sql);
                 if ($dataset) {

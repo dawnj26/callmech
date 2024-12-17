@@ -164,7 +164,7 @@
         <header>
             <div class="logo">
             <?php
-                require 'config.php';
+                require 'utils/config.php';
                 $sql = "SELECT * FROM `components_images` where status='Current'";
                 $dataset = $connect->query($sql);
                 if ($dataset) {
@@ -209,7 +209,7 @@
         <div class="orange"></div>
         <div class="mainbody">
         <?php
-                require 'config.php';
+                require 'utils/config.php';
                 
                 $username= $_GET['username'];//session the name of mechanic
                  $mechname= $_SESSION['fname'] . " " . $_SESSION['lname'];
@@ -248,7 +248,7 @@
                 ?>
                 </div>
                 <?php
-                require 'config.php';
+                require 'utils/config.php';
                 if (isset($_POST['send'])) {
                     $username= $_GET['username'];//session the name of mechanic
                     $mechname= $_SESSION['fname'] . " " . $_SESSION['lname'];

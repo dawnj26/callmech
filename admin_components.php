@@ -186,7 +186,7 @@ session_start();
     <header>
         <div class="logo">
             <?php
-            require 'config.php';
+            require 'utils/config.php';
             $sql = "SELECT * FROM `components_images` where status='Current'";
             $dataset = $connect->query($sql);
             if ($dataset) {
@@ -213,6 +213,12 @@ session_start();
                 </li>
                 <li>
                     <a href="admin_components.php" class="active">Components</a>
+                </li>
+                <li>
+                    <a href="admin/mechanics.php">Mechanics</a>
+                </li>
+                <li>
+                    <a href="admin/users.php">Users</a>
                 </li>
                 <li>
                     <a href="adminlogin.php">Logout</a>
@@ -256,7 +262,7 @@ session_start();
                     </div>
                 </div>
                 <?php
-                require 'config.php';
+                require 'utils/config.php';
                 $sql = "SELECT * FROM `components_images` where components_name='logo'";
                 $dataset = $connect->query($sql);
                 if ($dataset) {
@@ -317,7 +323,7 @@ session_start();
                     </div>
                 </div>
                 <?php
-                require 'config.php';
+                require 'utils/config.php';
                 $sql = "SELECT * FROM `components_images` where components_name='background_img'";
                 $dataset = $connect->query($sql);
                 if ($dataset) {

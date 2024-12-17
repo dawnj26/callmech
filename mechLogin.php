@@ -134,7 +134,7 @@ if (isset($_GET['logout'])) {
 <body>
 <div class="d-flex flex-wrap justify-content-center align-item-center;" style="height:100vh;">
      <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='login'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -154,7 +154,7 @@ if (isset($_GET['logout'])) {
                     <form action="" method="POST">
                         <center>
                             <?php
-                            // require 'config.php';
+                            // require 'utils/config.php';
                             // $sql = "SELECT * FROM `components_images` where status='Current'";
                             // $dataset = $connect->query($sql);
                             // if ($dataset) {
@@ -198,7 +198,7 @@ if (isset($_GET['logout'])) {
     </div>
     <?php
     if (isset($_POST['Login'])) {
-        require "config.php";
+        require 'utils/config.php';
         
         $email = $_POST['email'];
         $pwd = $_POST['pwd'];

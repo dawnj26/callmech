@@ -30,7 +30,7 @@
 <body>
 
     <div class="d-flex flex-wrap justify-content-center align-item-center;" style="height:100vh;<?php
-                require 'config.php';
+                require 'utils/config.php';
                 $sql = "SELECT * FROM `components_images` where status='user_type'";
                 $dataset = $connect->query($sql);
                 if ($dataset) {
@@ -48,7 +48,7 @@
         <center><div class="col-sm-7">
             <center>
             <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {

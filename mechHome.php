@@ -190,7 +190,7 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -271,7 +271,7 @@ session_start();
     <!-- inserting post on db-->
     <?php
     if (isset($_POST['POST'])) {
-        require 'config.php';
+        require 'utils/config.php';
         $post_content  = $_POST['post_content'];
         $user_id = $_SESSION['user_id'];
         $dataset = $connect->query("INSERT INTO `post`(`user_id`, `content`, `date_created`) VALUES ($user_id,'$post_content','" . strtotime(date("Y-m-d h:i:sa")) . "')") or die("Error query");
@@ -280,7 +280,7 @@ session_start();
     <!-- inserting comment on db-->
     <?php
     if (isset($_POST['comment'])) {
-        require 'config.php';
+        require 'utils/config.php';
         $comment_content = $_POST['comment_content'];
         $post_id = $_POST['id'];
         $user_id = $_SESSION['mechanicid'];
@@ -290,7 +290,7 @@ session_start();
     ?>
     <!-- displaying post on page-->
     <?php
-    require 'config.php';
+    require 'utils/config.php';
     $query = mysqli_query($connect, "SELECT *,UNIX_TIMESTAMP() - date_created AS TimeSpent from post LEFT JOIN user on user.user_id = post.user_id order by post_id DESC") or die("Error query");
     while ($post_row = mysqli_fetch_array($query)) {
         $id = $post_row['post_id'];
@@ -367,7 +367,7 @@ if (isset($_POST['comment'])) {
                     <hr>
                     <!-- displaying comment -->
                     <?php
-                    require 'config.php';
+                    require 'utils/config.php';
                     $comment_query = mysqli_query($connect, "SELECT * ,UNIX_TIMESTAMP() - date_posted AS TimeSpent FROM comment LEFT JOIN mechanics on mechanics.mechid = comment.mechanic_id where post_id = '$id'") or die("Error query");
                     while ($comment_row = mysqli_fetch_array($comment_query)) {
                         $comment_id = $comment_row['comment_id'];

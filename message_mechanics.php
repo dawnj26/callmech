@@ -33,7 +33,7 @@ session_start();
     <div class="container">
         <center>
         <?php
-        require 'config.php';
+        require 'utils/config.php';
 
         $username = $_SESSION['mechname'];
 

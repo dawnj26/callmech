@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require 'utils/config.php';
 $id = $_SESSION['mechanicid'];
 $name=$_POST['name'];
 $addr=$_POST['address'];

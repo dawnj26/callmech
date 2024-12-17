@@ -224,7 +224,7 @@ session_start();
     </header>
     <div class="orange"></div>
     <?php
-    require 'config.php';
+    require 'utils/config.php';
 
     $mechanicID =  $_SESSION['mechanicid'];
     if (!$mechanicID) {
