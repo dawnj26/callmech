@@ -184,7 +184,7 @@ session_start();
     <header>
         <div class="logo">
         <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -229,7 +229,7 @@ session_start();
     </div>
     <div class="mainbody" style="margin-top:5px;">
         <div class="d-flex flex-row-reverse" style="margin-right:15%;">
-            <a><input type="submit" class="btn btn-primary btn-sm" value="Edit Profile" style="background-color:lightgrey;border:none; width:180%;padding:8px;color:black;" data-bs-toggle="modal" data-bs-target="#myModal"></a>
+            <a href="edit_mechanic.php?mechid=<?php echo $_SESSION['mechanicid']; ?>"><input type="submit" class="btn btn-primary btn-sm" value="Edit Profile" style="background-color:lightgrey;border:none; width:180%;padding:8px;color:black;" ></a>
             &emsp;&emsp;&emsp;&emsp;&emsp;<a href="mechLogin.php?logout=1"><input type="submit" class="btn btn-primary btn-sm" value="Logout" style="background-color:#F86D1A;border:none; width:200%;padding:8px;"></a>
         </div>
         <div class="modal" id="myModal">
@@ -247,7 +247,7 @@ session_start();
 
                         <form action="update_mech_profile.php" method="post">
                             <?php
-                            require 'config.php';
+                            require 'utils/config.php';
                             $id = $_SESSION['mechanicid'];
                             $sql = "SELECT * FROM `mechanics` where mechid=$id";
                             $dataset = $connect->query($sql);
