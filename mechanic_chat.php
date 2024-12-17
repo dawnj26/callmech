@@ -228,7 +228,7 @@
         <header>
             <div class="logo">
             <?php
-                // require 'config.php';
+                // require 'utils/config.php';
                 // $sql = "SELECT * FROM `components_images` where status='Current'";
                 // $dataset = $connect->query($sql);
                 // if ($dataset) {
@@ -270,11 +270,13 @@
         <!-- <div class="orange"></div> -->
         <div class="mainbody" style="width: 50%;">
         <?php
-                require 'config.php';
-                require 'utils/utils.php';
+                require 'utils/config.php';
+                require 'utils/notifications.php';
                 
                 $mechname = $_SESSION['mechname'];//session the name of mechanic
                 $username = $_GET['username'];
+                // echo $username;
+                $userId = getUserIdByName($username);
                 
 
                 ?>
@@ -282,6 +284,7 @@
     <br><br>  
     <center>
         <div class="chathead" style="background:#3c3c3c;padding: 20px;border-radius:5px; color:white; " ><?php echo $username?></div> <br>
+        <a href="add_report.php?user_id=<?php echo $userId ?>" class="btn btn-primary">Report user</a>
         <div class="xxd" style="width:100%; display: flex; flex-direction: column; max-height: 400px; overflow-y: auto; padding-bottom: 20px;">
         <?php
 
