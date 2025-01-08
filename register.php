@@ -256,7 +256,7 @@
                             text: 'You have successfully created an account.',
                             type: 'success'
                             }).then(function() {
-                                window.location.href = 'login.php';
+                                window.location.href = 'index.php';
                             })</script>";
             }
             $connect->close();

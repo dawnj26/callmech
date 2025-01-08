@@ -79,14 +79,15 @@ session_start();
         padding-left: 50px;
         padding-top: 20px;
         padding-bottom: 20px;
-        
+
         transition: 0.2s;
         text-decoration: none;
 
     }
+
     nav ul li a:hover {
         font-size: 20px;
-        color:orange;
+        color: orange;
         text-decoration: none;
     }
 
@@ -95,7 +96,8 @@ session_start();
         font-weight: bold;
         color: #F86D1A;
     }
-/* 
+
+    /* 
     .orange {
         background: #F86D1A;
         width: 23%;
@@ -179,6 +181,7 @@ session_start();
             margin-bottom: 5px;
         }
     }
+
     .pfp {
         width: 40px;
         height: 40px;
@@ -189,21 +192,21 @@ session_start();
 <body>
     <header>
         <div class="logo">
-        <?php
-                // require 'utils/config.php';
-                // $sql = "SELECT * FROM `components_images` where status='Current'";
-                // $dataset = $connect->query($sql);
-                // if ($dataset) {
-                //     if ($dataset->num_rows > 0) {
-                //         while ($row = $dataset->fetch_array()) {
-                //             $image = $row['2'];
-                ?>
-                            <img class="imglogo" src="image/NEARMELOGO.png">
-                <?php
-                //         }
-                //     }
-                // }
-                ?>
+            <?php
+            // require 'utils/config.php';
+            // $sql = "SELECT * FROM `components_images` where status='Current'";
+            // $dataset = $connect->query($sql);
+            // if ($dataset) {
+            //     if ($dataset->num_rows > 0) {
+            //         while ($row = $dataset->fetch_array()) {
+            //             $image = $row['2'];
+            ?>
+            <img class="imglogo" src="image/NEARMELOGO.png">
+            <?php
+            //         }
+            //     }
+            // }
+            ?>
         </div>
         <input type="checkbox" id="nav_check" hidden>
         <nav>
@@ -211,11 +214,11 @@ session_start();
                 <img src="img/logo.png" alt="">
             </div>
             <ul>
-            <ul>
-            <li>
-                    <a href="mechHome.php" class="active">HOME</a>
+                <ul>
+                    <li>
+                        <a href="mechHome.php" class="active">HOME</a>
                     </li>
-                <!-- </li>
+                    <!-- </li>
                 <li>
                     <a href="mech.php">MECHANIC</a>
                 </li>
@@ -229,7 +232,7 @@ session_start();
                 <li>
                     <a href="aboutus.php">ABOUT US</a>
                 </li> -->
-                <li>
+                    <li>
                         <a href="mechMessage.php">MESSAGES</a>
                     </li>
                     <li>
@@ -241,11 +244,11 @@ session_start();
                     <li>
                         <a href="faqsmech.php">FAQs</a>
                     </li>
-                <li>
-    <a href="notifications.php"><i class="fas fa-bell"></i></a>
-    </li>
-</ul>
-            </li>
+                    <li>
+                        <a href="notifications.php"><i class="fas fa-bell"></i></a>
+                    </li>
+                </ul>
+                </li>
             </ul>
         </nav>
     </header>
@@ -299,14 +302,14 @@ session_start();
         $id = $post_row['post_id'];
         $upid = $post_row['user_id'];
         $username = $post_row['first_name'] . " " . $post_row['last_name'];
-        $user_pic=$post_row['profile_pic'];
+        $user_pic = $post_row['profile_pic'];
     ?>
         <div class="container-sm">
             <div class="card w-50 mx-auto my-3" style="background-color: rgba(255, 255, 255, 0.1); color:white;">
-                <div class="card-body" >
+                <div class="card-body">
                     <table>
                         <tr>
-                            <td><a href="#"><img src="image/<?php echo $user_pic; ?>" alt="" srcset="" class="rounded-circle pfp" ></a></td>
+                            <td><a href="#"><img src="image/<?php echo $user_pic; ?>" alt="" srcset="" class="rounded-circle pfp"></a></td>
                             <td> <a href="#" style="text-decoration:none; color: white;"><?php echo $username; ?></a>
                                 <br>
                                 <div class="label">
@@ -333,22 +336,22 @@ session_start();
                         </tr>
                     </table>
                     <div class="d-flex flex-row-reverse">
-<?php
-if (isset($_POST['comment'])) {
-    // ... (existing code for inserting comments)
+                        <?php
+                        if (isset($_POST['comment'])) {
+                            // ... (existing code for inserting comments)
 
-    // Insert notification for the user
-    $user_id = $_SESSION['user_id']; // Assuming this session variable holds the user's ID
-    $mechanic_id = $_SESSION['mechanicid']; // Assuming this session variable holds the mechanic's ID
-    $post_id = $id; // Assuming $id is the post ID where the mechanic replied
+                            // Insert notification for the user
+                            $user_id = $_SESSION['user_id']; // Assuming this session variable holds the user's ID
+                            $mechanic_id = $_SESSION['mechanicid']; // Assuming this session variable holds the mechanic's ID
+                            $post_id = $id; // Assuming $id is the post ID where the mechanic replied
 
-    $notification_text = "Mechanic replied to your post.";
-    $notification_query = $connect->query("INSERT INTO notifications (user_id, mechanic_id, post_id, notification_text) VALUES ($user_id, $mechanic_id, $post_id, '$notification_text')");
-}
+                            $notification_text = "Mechanic replied to your post.";
+                            $notification_query = $connect->query("INSERT INTO notifications (user_id, mechanic_id, post_id, notification_text) VALUES ($user_id, $mechanic_id, $post_id, '$notification_text')");
+                        }
 
 
                         echo "<button type=\"button\" class=\"btn btn-primary btn-sm\" style=\"background-color:#F86D1A;border:none; width:20%;padding:5px;\"><a href=\"mechanic_chat.php?username=$username\" style=\"text-decoration:none; color:#D9D9D9;\">message</a></button>";
-?>
+                        ?>
                     </div>
                     <hr>
                     <?php echo $post_row['content']; ?>
@@ -363,7 +366,7 @@ if (isset($_POST['comment'])) {
                                 <textarea class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" rows="1" name="comment_content" placeholder="Type your comment..."></textarea>
                             </div>
                         </div>
-                        <div >
+                        <div>
                             <input class="btn " style="text-decoration:none; color:#D9D9D9; background-color:#F86D1A" type="submit" name="comment" value="Reply">
                         </div>
                     </form>
@@ -375,12 +378,12 @@ if (isset($_POST['comment'])) {
                     while ($comment_row = mysqli_fetch_array($comment_query)) {
                         $comment_id = $comment_row['comment_id'];
                         $comment_by = $comment_row['mechName'];
-                        $mechpic=$comment_row['mech_pfp'];
+                        $mechpic = $comment_row['mech_pfp'];
                     ?>
                         <table>
                             <tr>
-                                <td><a href="#"><img src="image/<?php echo $mechpic; ?>" alt="" srcset="" class="rounded-circle mx-2 pfp" ></a></td>
-                                <td><a href="#"style="text-decoration:none; color: white;"><?php echo $comment_by; ?></a> : <?php echo $comment_row['content']; ?>
+                                <td><a href="#"><img src="image/<?php echo $mechpic; ?>" alt="" srcset="" class="rounded-circle mx-2 pfp"></a></td>
+                                <td><a href="#" style="text-decoration:none; color: white;"><?php echo $comment_by; ?></a> : <?php echo $comment_row['content']; ?>
                                     <div class="label">
                                         <?php
                                         $days = floor($comment_row['TimeSpent'] / (60 * 60 * 24));

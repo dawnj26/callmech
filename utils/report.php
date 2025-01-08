@@ -26,7 +26,7 @@ function getReports(): array
 {
     global $connect;
 
-    $query = "SELECT * FROM reports";
+    $query = "SELECT reports.id AS 'report_id', user.user_id, reports.content, reports.created_at, user.first_name, user.last_name, user.deleted_at FROM `reports` INNER JOIN `user` ON user.user_id = reports.user_id";
 
     $result = $connect->query($query);
 

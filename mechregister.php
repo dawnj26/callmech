@@ -150,7 +150,7 @@
                 <div class="top">
                     <center><img src="image/NEARMELOGO.png" width="200" height="200" alt=""></center>
                     <header>Create New Account</header>
-                    <span>Already a member? &nbsp;<b><a href="mechLogin.php">Login.</a></b></span>
+                    <span>Already a member? &nbsp;<b><a href="index.php">Login.</a></b></span>
                 </div>
                 <br><b>Personal Information:</b>
                 <br>
@@ -254,7 +254,7 @@
                         text: 'You have successfully created an account.',
                         type: 'success'
                         }).then(function() {
-                            window.location.href = 'mechLogin.php';
+                            window.location.href = 'index.php';
                         })</script>";
         }
         $connect->close();

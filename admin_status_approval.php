@@ -219,7 +219,10 @@ session_start();
                     <a href="admin/users.php">Users</a>
                 </li>
                 <li>
-                    <a href="adminlogin.php">Logout</a>
+                <a href="admin/reports.php">Reports</a>
+                </li>
+                <li>
+                    <a href="/callmechanic/">Logout</a>
                 </li>
             </ul>
         </nav>

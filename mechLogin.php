@@ -4,8 +4,8 @@ if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
 }
-    session_start();
-    ?>
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,13 +24,20 @@ if (isset($_GET['logout'])) {
     * {
         font-family: 'poppins', sans-serif;
     }
+
     body {
-        background-color: #1F1F1F; /* Default background color */
-    background-image: url('img/loginbg.png'); /* Background image */
-    background-repeat: no-repeat; /* Prevent tiling */
-    background-size: cover; /* Ensure the image covers the entire screen */
-    background-position: center; /* Center the image */
-    overflow: hidden; /* Prevent scrollbars if not needed */
+        background-color: #1F1F1F;
+        /* Default background color */
+        background-image: url('img/loginbg.png');
+        /* Background image */
+        background-repeat: no-repeat;
+        /* Prevent tiling */
+        background-size: cover;
+        /* Ensure the image covers the entire screen */
+        background-position: center;
+        /* Center the image */
+        overflow: hidden;
+        /* Prevent scrollbars if not needed */
     }
 
     .box {
@@ -132,74 +139,62 @@ if (isset($_GET['logout'])) {
 </style>
 
 <body>
-<div class="d-flex flex-wrap justify-content-center align-item-center;" style="height:100vh;">
-     <?php
-                // require 'utils/config.php';
-                // $sql = "SELECT * FROM `components_images` where status='login'";
-                // $dataset = $connect->query($sql);
-                // if ($dataset) {
-                //     if ($dataset->num_rows > 0) {
-                //         while ($row = $dataset->fetch_array()) {
-                //             $image = $row['2'];
-                ?>
-                            /* background-image: url('img/loginbg.png');background-repeat:no-repeat;background-position:center;"> */
-                <?php
-                //         }
-                //     }
-                // }
-                ?>
+    <div class="d-flex flex-wrap justify-content-center align-item-center;" style="height:100vh;">
+        <?php
+        // require 'utils/config.php';
+        // $sql = "SELECT * FROM `components_images` where status='login'";
+        // $dataset = $connect->query($sql);
+        // if ($dataset) {
+        //     if ($dataset->num_rows > 0) {
+        //         while ($row = $dataset->fetch_array()) {
+        //             $image = $row['2'];
+        ?>
+        /* background-image: url('img/loginbg.png');background-repeat:no-repeat;background-position:center;"> */
+        <?php
+        //         }
+        //     }
+        // }
+        ?>
         <div class="box">
             <div class="container">
-                <div class="top">
-                    <form action="" method="POST">
+                <form action="" method="POST">
+                    <div class="top">
                         <center>
-                            <?php
-                            // require 'utils/config.php';
-                            // $sql = "SELECT * FROM `components_images` where status='Current'";
-                            // $dataset = $connect->query($sql);
-                            // if ($dataset) {
-                            //     if ($dataset->num_rows > 0) {
-                            //         while ($row = $dataset->fetch_array()) {
-                            //             $image = $row['2'];
-                            ?>
-                                        <img src="image/NEARMELOGO.png" width="180" height="180" alt="" name="logo">
-                            <?php
-                            //         }
-                            //     }
-                            // }
-                            ?>
+                            <img src="image/NEARMELOGO.png" width="180" height="180" alt="" name="logo">
                         </center>
                         <span>Sign in to your account.</span>
-                </div>
-                <div class="input-field">
-                    <input type="text" class="input" placeholder="Email" name="email" required>
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div class="input-field">
-                    <input type="Password" class="input" placeholder="Password" name="pwd" required>
-                    <i class="fa-solid fa-key"></i>
-                </div>
-                <div class="input-field">
-                    <input type="submit" class="submit" value="Login" name="Login">
-                </div>
-                <div>
-    <p><a href="forgot_password.php">Forgot Password?</a></p>
-</div>
-                <div>
-                    <p>Not a member yet? &nbsp; <b><a href="mechregister.php">Sign up.</a></b></p>
-                    <!-- <p><a href="mechLogin.php">Login as mechanic</a></p> -->
-                </div>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" class="input" placeholder="Email" name="email" required>
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="Password" class="input" placeholder="Password" name="pwd" required>
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <input type="radio" name="type" id="mech">Mechanic
+                    <input type="radio" name="type" id="user">User
+                    <div class="input-field">
+                        <input type="submit" class="submit" value="Login" name="Login">
+                    </div>
+                    <div>
+                        <p><a href="forgot_password.php">Forgot Password?</a></p>
+                    </div>
+                    <div>
+                        <p>Not a member yet? &nbsp; <b><a href="mechregister.php">Sign up.</a></b></p>
+                       
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 
-    
+
     </div>
     <?php
     if (isset($_POST['Login'])) {
         require 'utils/config.php';
-        
+
         $email = $_POST['email'];
         $pwd = $_POST['pwd'];
         $sql = "SELECT * FROM `mechanics` WHERE mechEmail='$email' and mechpwd='$pwd'";
@@ -212,46 +207,45 @@ if (isset($_GET['logout'])) {
                 $maddr = $data['mechaddr'];
                 $mechno1 = $data['mechno'];
                 $mechpfp = $data['mech_pfp'];
-                $mechserv=$data['mech_services'];
-                $mechcover=$data['mech_cover'];
-                $status=$data['acc_status'];
+                $mechserv = $data['mech_services'];
+                $mechcover = $data['mech_cover'];
+                $status = $data['acc_status'];
 
-            if ($status=="Approved"){
+                if ($status == "Approved") {
 
-                $_SESSION['mechanicid']=$id;
-                $_SESSION['mechname']=$mname;
-                $_SESSION['mechemail']=$memail;
-                $_SESSION['mechaddr']=$maddr;
-                $_SESSION['user_type'] = 'mechanic';
-                $_SESSION['mechnum']=$mechno1;
-                $_SESSION['mechpfp']=$mechpfp;
-                $_SESSION['mech_services']=$mechserv;
-                $_SESSION['mech_cover']=$mechcover;
+                    $_SESSION['mechanicid'] = $id;
+                    $_SESSION['mechname'] = $mname;
+                    $_SESSION['mechemail'] = $memail;
+                    $_SESSION['mechaddr'] = $maddr;
+                    $_SESSION['user_type'] = 'mechanic';
+                    $_SESSION['mechnum'] = $mechno1;
+                    $_SESSION['mechpfp'] = $mechpfp;
+                    $_SESSION['mech_services'] = $mechserv;
+                    $_SESSION['mech_cover'] = $mechcover;
 
-            echo "<center><i class='fa-solid fa-spinner' style='color:white;font-size:8px;'> Logging in...</i></center>";
-            ?><script type="text/javascript">
-            window.location.href = 'mechHome.php';
-          </script><?php
-            }
-            else{
-                echo "
+                    echo "<center><i class='fa-solid fa-spinner' style='color:white;font-size:8px;'> Logging in...</i></center>";
+    ?><script type="text/javascript">
+                        window.location.href = 'mechHome.php';
+                    </script><?php
+                            } else {
+                                echo "
                 <script>swal({
                     title: 'Unable to login!',
                     icon:'error',
                     text: 'Account is currently being reviewed.',
                 })</script>";
-            }
-        }
-        } else {
-            echo "
+                            }
+                        }
+                    } else {
+                        echo "
                         <script>swal({
                             title: 'Unable to login!',
                             icon:'error',
                             text: 'You have entered an incorrect username/password.',
                         })</script>";
-        }
-    }
-    ?>
+                    }
+                }
+                                ?>
     <footer>
         <div class="text-center">
             <p style="color:#D9D9D9;">Copyright &copy; 2024 All Rights Reserved by<span style="color:#F86D1A;">NearMe</span>.</p>

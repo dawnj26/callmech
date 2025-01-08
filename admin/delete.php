@@ -48,10 +48,14 @@
 
     <?php
     require '../utils/users.php';
+    require '../utils/shared.php';
+
+    $route = isset($_GET['report']) ? 'http://localhost/callmechanic/admin/reports.php' : 'http://localhost/callmechanic/admin/users.php';
     if (deleteUser($_GET['id'])) {
-        header('Location: /callmechanic/admin/users.php?deleted=1');
+        // header('Location: ');
+        redirect("$route?deleted=1");
     } else {
-        header('Location: /callmechanic/admin/users.php?error=1');
+       redirect("$route?error=1");
     }
     ?>
 

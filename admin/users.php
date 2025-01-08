@@ -1,5 +1,5 @@
 <?php
-require '../utils/users.php';   
+require '../utils/users.php';
 ?>
 
 <!doctype html>
@@ -81,6 +81,8 @@ require '../utils/users.php';
                     echo '<div class="alert alert-success">User deleted successfully</div>';
                 } else if (isset($_GET['updated'])) {
                     echo '<div class="alert alert-success">User updated successfully</div>';
+                } else if (isset($_GET['enabled'])) {
+                    echo '<div class="alert alert-success">User enabled successfully</div>';
                 } else if (isset($_GET['error'])) {
                     echo '<div class="alert alert-danger">Something went wrong</div>';
                 }
@@ -106,10 +108,19 @@ require '../utils/users.php';
                             echo '<td>' . htmlspecialchars($user['last_name']) . '</td>';
                             echo '<td>' . htmlspecialchars($user['email']) . '</td>';
                             echo '<td>' . htmlspecialchars($user['contactno']) . '</td>';
-                            echo '<td>
+                            if ($user['deleted_at']) {
+                                echo '<td>
                                     <a href="edit.php?id=' . $user['user_id'] . '" class="btn-action">Edit</a>
-                                    <a href="delete.php?id=' . $user['user_id'] . '" class="btn-action btn-delete" onclick="return confirm(\'Are you sure?\')">Delete</a>
+                                    <a href="enable.php?id=' . $user['user_id'] . '" class="btn-action btn-delete" onclick="return confirm(\'Are you sure?\')">Enable</a>
                                 </td>';
+                            } else {
+                                echo '<td>
+                                    <a href="edit.php?id=' . $user['user_id'] . '" class="btn-action">Edit</a>
+                                    <a href="delete.php?id=' . $user['user_id'] . '" class="btn-action btn-delete" onclick="return confirm(\'Are you sure?\')">Disable</a>
+                                </td>';
+                            }
+
+                            
                             echo '</tr>';
                         }
                         echo '</tbody></table>';

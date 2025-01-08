@@ -40,10 +40,23 @@ function getUserById($id) {
 function deleteUser(int $id): bool
 {
     global $connect;
+    $time = date("Y-m-d");
 
-    $query = "DELETE FROM user WHERE user_id=$id";
+    $query = "UPDATE `user` SET `deleted_at`='$time' WHERE user_id=$id";
+    // echo $query;
 
-    sleep(2);
+    $result = $connect->query($query);
+
+    return $result;
+}
+
+function enableUser(int $id): bool
+{
+    global $connect;
+    $time = date("Y-m-d");
+
+    $query = "UPDATE `user` SET `deleted_at`=NULL WHERE user_id=$id";
+    // echo $query;
 
     $result = $connect->query($query);
 
